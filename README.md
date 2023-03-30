@@ -9,4 +9,4 @@ Projektmanagement wird in Jira Dokumentiert
 
 Die Funktionalitäten der Website und alle weiteren Anforderungen wurden vorab im "Software Requirement Sheet" (SRS) dokumentiert
 
-Bei Fragen zum Projekt wenden Sie sich an "inf21011@lehre.dhbw-stuttgart.de
+Bei Fragen zum Projekt wenden Sie sich an "inf21011@lehre.dhbw-stuttgart.de"
