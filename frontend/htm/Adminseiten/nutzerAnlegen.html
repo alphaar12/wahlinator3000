@@ -7,15 +7,18 @@
 		<input type="text" id="id" name="id"> required<br>
 
 		<label for="lastname">Nachname:</label>
-		<input type="text" id="lastname" name="lastname"> required<br>
+		<input type="text" id="lastname" name="lastname" required><br>
 
 		<label for="firstname">Vorname:</label>
-		<input type="text" id="firstname" name="firstname"> required<br>
+		<input type="text" id="firstname" name="firstname" required><br>
 
 		<label for="birthday">Geburtstag:</label>
-		<input type="date" id="birthday" name="birthday"> required<br>
+		<input type="date" id="birthday" name="birthday" required><br>
 
-		<input type="submit" value="Registrieren">
+		<label for="plz">Postleitzahl:</label>
+		<input type="number" id="plz" name="plz" maxlength="5" required><br>
+
+		<input type="submit" value="Registrieren" onclick="showPopup(document.getElementById('id').value, document.getElementById('lastname').value, document.getElementById('firstname').value, document.getElementById('birthday').value, document.getElementById('plz').value)">
 	</form>
 </body>
 </html>
