@@ -1,0 +1,43 @@
+<div class="content">
+  <h2 class="mat-typography">Neuen Nutzer anlegen</h2>
+  <mat-divider></mat-divider>
+  <form [formGroup]="createForm" class="create-form">
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <input matInput type="number" formControlName="id" #id>
+      <mat-label>Ausweisnummer</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <input matInput formControlName="firstName" #firstName>
+      <mat-label>Vorname</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <input matInput formControlName="lastName" #lastName>
+      <mat-label>Nachname</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <input matInput [matDatepicker]="picker" formControlName="birthdate" #birthdate>
+      <mat-label>Geburtstag</mat-label>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker startView="multi-year" color="accent" #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <input matInput type="number" formControlName="zipCode" #zipCode>
+      <mat-label>Postleitzahl</mat-label>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+    <br>
+    <div class="button-container">
+      <button type="submit"
+              (click)="addUser(id.valueAsNumber, firstName.value, lastName.value, birthdate.valueAsDate, zipCode.valueAsNumber)"
+              [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="accent" class="button">
+        Anlegen
+      </button>
+      <button mat-raised-button color="warn" routerLink="/" class="button button-right">Zurück</button>
+    </div>
+  </form>
+</div>
