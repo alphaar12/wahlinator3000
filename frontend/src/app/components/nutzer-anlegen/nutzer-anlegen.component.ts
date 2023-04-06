@@ -14,7 +14,7 @@ export class NutzerAnlegenComponent {
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) {
     this.createForm = this.formBuilder.group({
-      id: ['', Validators.required],
+      personalNumber: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       birthdate: ['', Validators.required],
@@ -22,8 +22,8 @@ export class NutzerAnlegenComponent {
     });
   }
 
-  addUser(id: number, firstName: String, lastName: String, birthdate: any, zipCode: number) {
-    this.userService.addUser(id, firstName, lastName, birthdate, zipCode).subscribe(() => {
+  addUser(personalNumber: String, firstName: String, lastName: String, birthdate: any, zipCode: number) {
+    this.userService.addUser(personalNumber, firstName, lastName, birthdate, zipCode).subscribe(() => {
       this.router.navigate(['/list']).then(r => {})
     });
   }

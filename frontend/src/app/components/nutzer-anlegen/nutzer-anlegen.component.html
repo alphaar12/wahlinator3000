@@ -3,7 +3,7 @@
   <mat-divider></mat-divider>
   <form [formGroup]="createForm" class="create-form">
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
-      <input matInput type="number" formControlName="id" #id>
+      <input matInput type="text" formControlName="personalNumber" #personalNumber>
       <mat-label>Ausweisnummer</mat-label>
     </mat-form-field>
 
@@ -33,7 +33,7 @@
     <br>
     <div class="button-container">
       <button type="submit"
-              (click)="addUser(id.valueAsNumber, firstName.value, lastName.value, birthdate.valueAsDate, zipCode.valueAsNumber)"
+              (click)="addUser(personalNumber.value, firstName.value, lastName.value, birthdate.valueAsDate, zipCode.valueAsNumber)"
               [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="accent" class="button">
         Anlegen
       </button>

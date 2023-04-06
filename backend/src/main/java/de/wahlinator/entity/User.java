@@ -1,7 +1,6 @@
 package de.wahlinator.entity;
 
-import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -12,25 +11,40 @@ import java.util.Objects;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private int id;
 
-    private int personalNumber;
+    @Column(name = "personal_number")
+    private String personalNumber;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "birthdate")
     private Date birthdate;
-    private String password;
+
+    @Column(name = "zip_code")
     private int zipCode;
 
-    public User(int id, int personalNumber, String firstName, String lastName, Date birthdate, String password, int zipCode) {
+    @Column(name = "password")
+    private String password;
+
+    public User(int id, String personalNumber, String firstName, String lastName, Date birthdate, int zipCode, String password) {
         this.id = id;
         this.personalNumber = personalNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
-        this.password = password;
         this.zipCode = zipCode;
+        this.password = password;
     }
 
+    public User() {
+        super();
+    }
 
     public int getId() {
         return id;
@@ -40,11 +54,11 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public int getPersonalNumber() {
+    public String getPersonalNumber() {
         return personalNumber;
     }
 
-    public void setPersonalNumber(int personalNumber) {
+    public void setPersonalNumber(String personalNumber) {
         this.personalNumber = personalNumber;
     }
 

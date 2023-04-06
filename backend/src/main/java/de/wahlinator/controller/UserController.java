@@ -8,6 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
 public class UserController {
 
     @Autowired
@@ -20,13 +24,21 @@ public class UserController {
     ) {
         if (!userRepo.existsById(user.getId())) {
             userRepo.save(
-                    new User(0, user.getPersonalNumber(), user.getFirstName(), user.getLastName(), user.getBirthdate(), user.getPassword(), user.getZipCode())
+                    new User(0, user.getPersonalNumber(), user.getFirstName(), user.getLastName(), user.getBirthdate(), user.getZipCode(), user.getPassword())
             );
 
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/cars")
+    public ResponseEntity<List<User>> findAll() {
+        List<User> listUsers = userRepo.findAll();
+
+        return new ResponseEntity<>(listUsers, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

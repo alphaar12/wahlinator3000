@@ -9,9 +9,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  addUser(id: number, firstName: String, lastName: String, birthdate: Date, zipCode: number) {
+  addUser(personalNumber: String, firstName: String, lastName: String, birthdate: Date, zipCode: number) {
     const user = {
-      id: id,
+      personalNumber: personalNumber,
       firstName: firstName,
       lastName: lastName,
       birthdate: birthdate,
