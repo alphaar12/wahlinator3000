@@ -4,16 +4,24 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "personal_number")
+        })
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private int id;
 
+    @NotBlank
+    @Size(min = 9, max = 9)
     @Column(name = "personal_number")
     private String personalNumber;
 
@@ -32,8 +40,13 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    public User(int id, String personalNumber, String firstName, String lastName, Date birthdate, int zipCode, String password) {
-        this.id = id;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User(String personalNumber, String firstName, String lastName, Date birthdate, int zipCode, String password) {
         this.personalNumber = personalNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -102,16 +115,11 @@ public class User implements Serializable {
         this.zipCode = zipCode;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return id == user.id && personalNumber == user.personalNumber && zipCode == user.zipCode && firstName.equals(user.firstName) && lastName.equals(user.lastName) && birthdate.equals(user.birthdate) && password.equals(user.password);
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, personalNumber, firstName, lastName, birthdate, password, zipCode);
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

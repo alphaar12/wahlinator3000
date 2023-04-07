@@ -1,64 +1,40 @@
 package de.wahlinator.controller;
 
 import de.wahlinator.entity.User;
+import de.wahlinator.payload.response.MessageResponse;
 import de.wahlinator.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
+@RequestMapping("/admin")
 public class UserController {
 
     @Autowired
-    private UserRepository userRepo;
+    private UserRepository userRepository;
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/admin/newUser")
-    public ResponseEntity assignUser(
-            @RequestBody User user
-    ) {
-        if (!userRepo.existsById(user.getId())) {
-            userRepo.save(
-                    new User(0, user.getPersonalNumber(), user.getFirstName(), user.getLastName(), user.getBirthdate(), user.getZipCode(), user.getPassword())
-            );
-
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/cars")
-    public ResponseEntity<List<User>> findAll() {
-        List<User> listUsers = userRepo.findAll();
-
-        return new ResponseEntity<>(listUsers, HttpStatus.OK);
-    }
-
-    @CrossOrigin(origins = "http://localhost:4200")
     @Transactional
-    @PutMapping("/admin/edit/{id}")
-    public ResponseEntity editUser(
+    @PutMapping("/edit/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> editUser(
             @RequestBody User user,
             @PathVariable int id
     ) {
-        if (userRepo.existsById(user.getId())) {
-            userRepo.findById(id).get().setPersonalNumber(user.getPersonalNumber());
-            userRepo.findById(id).get().setFirstName(user.getFirstName());
-            userRepo.findById(id).get().setLastName(user.getLastName());
-            userRepo.findById(id).get().setBirthdate(user.getBirthdate());
-            userRepo.findById(id).get().setPassword(user.getPassword());
-            userRepo.findById(id).get().setZipCode(user.getZipCode());
+        if (userRepository.existsByPersonalNumber(user.getPersonalNumber())) {
+            userRepository.findById(id).get().setPersonalNumber(user.getPersonalNumber());
+            userRepository.findById(id).get().setFirstName(user.getFirstName());
+            userRepository.findById(id).get().setLastName(user.getLastName());
+            userRepository.findById(id).get().setBirthdate(user.getBirthdate());
+            userRepository.findById(id).get().setPassword(user.getPassword());
+            userRepository.findById(id).get().setZipCode(user.getZipCode());
 
-            return new ResponseEntity<>(HttpStatus.OK);
+            return ResponseEntity.ok(new MessageResponse("User updated successfully!"));
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: User not found!"));
         }
     }
 
