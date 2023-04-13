@@ -19,13 +19,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AnmeldeseiteComponent } from './components/anmeldeseite/anmeldeseite.component';
+import { NutzerBearbeitenComponent } from './components/nutzer-bearbeiten/nutzer-bearbeiten.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NutzerAnlegenComponent,
     AdminDashboardComponent,
-    AnmeldeseiteComponent
+    AnmeldeseiteComponent,
+    NutzerBearbeitenComponent
   ],
   imports: [
     BrowserModule,
