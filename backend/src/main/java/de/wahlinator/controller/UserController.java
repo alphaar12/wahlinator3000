@@ -2,6 +2,7 @@ package de.wahlinator.controller;
 
 import de.wahlinator.entity.User;
 import de.wahlinator.payload.response.MessageResponse;
+import de.wahlinator.payload.response.UserInfoResponse;
 import de.wahlinator.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,21 +19,32 @@ public class UserController {
     private UserRepository userRepository;
 
     @Transactional
-    @PutMapping("/edit/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/edit/{personalNumber}")
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> editUser(
             @RequestBody User user,
-            @PathVariable int id
+            @PathVariable String personalNumber
     ) {
         if (userRepository.existsByPersonalNumber(user.getPersonalNumber())) {
-            userRepository.findById(id).get().setPersonalNumber(user.getPersonalNumber());
-            userRepository.findById(id).get().setFirstName(user.getFirstName());
-            userRepository.findById(id).get().setLastName(user.getLastName());
-            userRepository.findById(id).get().setBirthdate(user.getBirthdate());
-            userRepository.findById(id).get().setPassword(user.getPassword());
-            userRepository.findById(id).get().setZipCode(user.getZipCode());
+            userRepository.findByPersonalNumber(personalNumber).get().setPersonalNumber(user.getPersonalNumber());
+            userRepository.findByPersonalNumber(personalNumber).get().setFirstName(user.getFirstName());
+            userRepository.findByPersonalNumber(personalNumber).get().setLastName(user.getLastName());
+            userRepository.findByPersonalNumber(personalNumber).get().setBirthdate(user.getBirthdate());
+            userRepository.findByPersonalNumber(personalNumber).get().setZipCode(user.getZipCode());
 
             return ResponseEntity.ok(new MessageResponse("User updated successfully!"));
+        } else {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: User not found!"));
+        }
+    }
+
+    @GetMapping("/getUser/{personalNumber}")
+    public ResponseEntity<?> getSingleCar(
+            @PathVariable String personalNumber
+    ) {
+        if (userRepository.existsByPersonalNumber(personalNumber)) {
+            User user = userRepository.findByPersonalNumber(personalNumber).get();
+            return ResponseEntity.ok().body(user);
         } else {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: User not found!"));
         }

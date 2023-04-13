@@ -24,4 +24,20 @@ export class UserService {
     };
     return this.http.post(`${environment.apiUrl}/auth/signup/`, user);
   }
+
+  getUserByPersonalNumber(personalNumber: String) {
+    return this.http.get(`${environment.apiUrl}/admin/getUser/${personalNumber}`);
+  }
+
+  editUser(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number) {
+    const user = {
+      personalNumber: personalNumber,
+      firstName: firstName,
+      lastName: lastName,
+      birthdate: formatDate(birthdate, "yyyy-MM-dd", "de-DE"),
+      zipCode: zipCode
+    };
+    return this.http.put(`${environment.apiUrl}/admin/editUser/${personalNumber}`, user);
+  }
+
 }
