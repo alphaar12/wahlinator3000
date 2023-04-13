@@ -1,0 +1,23 @@
+.create-form {
+  min-width: 150px;
+  width: 50%;
+  margin: auto;
+}
+
+.field-full-width {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  margin: 0 auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}

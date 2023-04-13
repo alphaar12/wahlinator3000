@@ -1,0 +1,43 @@
+<?php
+    $pagetitle = "anmeldeseite";
+    include "functions.php";
+
+    $username = $_POST['personalNumber'];
+    $passwort = $_POST['passwort'];
+
+    if ( strlen($personalNumber) > 0  and check_login( $personalNumber, $passwort ) ) {
+        $_SESSION['USER'] = $personalNumber;
+        header("Location: index.php");
+        exit;
+    }
+
+    include "header.php";
+
+
+
+<div class="content">
+  <h2 class="mat-typography">Anmelden</h2>
+  <mat-divider></mat-divider>
+  <form [formGroup]="createForm" class="create-form">
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <input matInput type="text" formControlName="personalNumber" #personalNumber>
+      <mat-label>Ausweisnummer</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <input matInput type="text" formControlName="password" #password>
+      <mat-label>Passwort</mat-label>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+    <br>
+    <div class="button-container">
+      <button type="submit"
+
+              [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="accent" class="button">
+        Anmelden
+      </button>
+      <button mat-raised-button color="warn" routerLink="/" class="button button-right">Zurück</button>
+    </div>
+  </form>
+</div>
