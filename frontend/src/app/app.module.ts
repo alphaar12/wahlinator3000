@@ -18,6 +18,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatSnackBarModule,
   ],
   exports: [
     HttpClientModule,
@@ -52,6 +54,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MatButtonModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   providers: [
     MatDatepickerModule,
