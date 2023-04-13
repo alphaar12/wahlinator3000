@@ -1,6 +1,3 @@
-CREATE DEFINER=`21A_Kessler_inf21128`@`%` PROCEDURE `Wahlinator3000Database`()
-BEGIN
-
 START TRANSACTION;
 
 DROP TABLE IF EXISTS Has_Voted_Election;
@@ -120,4 +117,3 @@ VALUES 	(2147483647, "L28771V9V","Corvin","Pape",DATE '2000-05-20',27432,"Passwo
 
 --    INSERT INTO HatRolle
 --    VALUES (1,1);
-END
