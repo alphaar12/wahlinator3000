@@ -25,7 +25,7 @@
     </mat-form-field>
 
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
-      <input matInput type="number" maxlength="5" minlength="5" formControlName="zipCode" #zipCode>
+      <input matInput type="number" pattern="\d{5}" min="10000" max="99999" formControlName="zipCode" #zipCode>
       <mat-label>Postleitzahl</mat-label>
     </mat-form-field>
 
