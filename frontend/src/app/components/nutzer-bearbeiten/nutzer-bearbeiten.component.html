@@ -1,7 +1,7 @@
 <div class="content">
-  <h2 class="mat-typography">Neuen Nutzer anlegen</h2>
+  <h2 class="mat-typography">Bestehenden Nutzer bearbeiten</h2>
   <mat-divider></mat-divider>
-  <form [formGroup]="createForm" class="create-form" (ngSubmit)="myNgForm.resetForm(); showButton = false;" #myNgForm="ngForm">
+  <form [formGroup]="editForm" class="create-form" (ngSubmit)="editNgForm.resetForm(); showButton = false;" #editNgForm="ngForm">
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
       <input matInput type="text" maxlength="9" minlength="9" formControlName="personalNumber" #personalNumber>
       <mat-label>Ausweisnummer</mat-label>
@@ -37,9 +37,9 @@
         Nutzerdaten abfragen
       </button>
       <button type="submit" *ngIf="showButton"
-
-              [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="accent" class="button">
-        Änderungen Speichern
+              (click)="editUser(personalNumber.value, firstName.value, lastName.value, birthdate.value, zipCode.valueAsNumber)"
+              [disabled]="editForm.invalid" mat-raised-button color="accent" class="button">
+        Änderungen speichern
       </button>
       <button mat-raised-button color="warn" routerLink="/admin" class="button button-right">Zurück</button>
     </div>

@@ -12,15 +12,14 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class NutzerBearbeitenComponent {
 
 
-  createForm: FormGroup;
+  editForm: FormGroup;
   showButton = false;
   isSuccessful = false;
-  isSignUpFailed = false;
   errorMessage = '';
   public userDetails: any;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
-    this.createForm = this.formBuilder.group({
+    this.editForm = this.formBuilder.group({
       personalNumber: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -30,25 +29,44 @@ export class NutzerBearbeitenComponent {
   }
 
   getUser(personalNumber: string) {
-    this.userService.getUserByPersonalNumber(personalNumber).subscribe(
-      (data: any) => {
+    this.userService.getUserByPersonalNumber(personalNumber).subscribe({
+      next: data => {
+        this.isSuccessful = true;
         this.userDetails = data;
-        console.log(this.userDetails);
-        this.setValue("firstName", this.userDetails.firstName);
-        this.setValue("lastName", this.userDetails.lastName);
-        this.setValue("firstName", this.userDetails.firstName);
-        this.setValue("birthdate", this.userDetails.birthdate);
-        this.setValue("zipCode", this.userDetails.zipCode);
+        this.editForm.get("personalNumber")?.setValue(this.userDetails.personalNumber);
+        this.editForm.get("firstName")?.setValue(this.userDetails.firstName);
+        this.editForm.get("lastName")?.setValue(this.userDetails.lastName);
+        this.editForm.get("birthdate")?.setValue(this.userDetails.birthdate);
+        this.editForm.get("zipCode")?.setValue(this.userDetails.zipCode);
+        this.showButton = true;
+      },
+      error: err => {
+        console.log(err);
+        this.errorMessage = err.error.message;
+        this.snackBar.open('Nutzer konnte nicht geladen werden! ' + this.errorMessage, 'OK', {
+          duration: 3000
+        });
       }
-    );
-
+    });
   }
 
-  setValue(id: string, value: string) {
-    const inputField = document.getElementById(id);
-    if (inputField) {
-      inputField.setAttribute("value", value);
-    }
+  editUser(personalNumber: String, firstName: String, lastName: String, birthdate: any, zipCode: number) {
+    this.userService.editUser(personalNumber, firstName, lastName, birthdate, zipCode).subscribe({
+      next: data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.snackBar.open('Nutzer wurde erfolgreich bearbeitet!', 'OK', {
+          duration: 3000
+        });
+      },
+      error: err => {
+        console.log(err);
+        this.errorMessage = err.error.message;
+        this.snackBar.open('Nutzer konnte nicht bearbeitet werden! ' + this.errorMessage, 'OK', {
+          duration: 3000
+        });
+      }
+    })
   }
 
   ngOnInit(): void {

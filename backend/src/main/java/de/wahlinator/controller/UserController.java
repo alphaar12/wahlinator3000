@@ -19,7 +19,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @Transactional
-    @PutMapping("/edit/{personalNumber}")
+    @PutMapping("/editUser/{personalNumber}")
     //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> editUser(
             @RequestBody User user,
