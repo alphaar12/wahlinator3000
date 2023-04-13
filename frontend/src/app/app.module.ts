@@ -18,12 +18,14 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { AnmeldeseiteComponent } from './components/anmeldeseite/anmeldeseite.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NutzerAnlegenComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AnmeldeseiteComponent
   ],
   imports: [
     BrowserModule,
