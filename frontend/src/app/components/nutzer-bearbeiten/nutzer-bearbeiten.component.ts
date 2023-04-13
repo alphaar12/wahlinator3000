@@ -11,12 +11,12 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class NutzerBearbeitenComponent {
 
-
   editForm: FormGroup;
   showButton = false;
   isSuccessful = false;
   errorMessage = '';
   public userDetails: any;
+  maxDate: Date;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.editForm = this.formBuilder.group({
@@ -26,6 +26,7 @@ export class NutzerBearbeitenComponent {
       birthdate: ['', Validators.required],
       zipCode: ['', Validators.required],
     });
+    this.maxDate = new Date();
   }
 
   getUser(personalNumber: string) {

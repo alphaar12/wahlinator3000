@@ -18,7 +18,7 @@
     </mat-form-field>
 
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
-      <input matInput [matDatepicker]="picker" formControlName="birthdate" #birthdate>
+      <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="birthdate" #birthdate>
       <mat-label>Geburtstag</mat-label>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker startView="multi-year" color="accent" #picker></mat-datepicker>

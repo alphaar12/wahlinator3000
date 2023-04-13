@@ -16,6 +16,7 @@ export class NutzerAnlegenComponent {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  maxDate: Date;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.createForm = this.formBuilder.group({
@@ -25,6 +26,7 @@ export class NutzerAnlegenComponent {
       birthdate: ['', Validators.required],
       zipCode: ['', Validators.required],
     });
+    this.maxDate = new Date();
   }
 
   addUser(personalNumber: String, firstName: String, lastName: String, birthdate: any, zipCode: number, password: String) {
