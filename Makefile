@@ -21,13 +21,11 @@ build-images:
 
 ## start the database
 start-db:
-	docker-compose up -d wahlinator-db
+	docker-compose up --build -d wahlinator-db
 
 ## start the local infrastructure
 start-db-backend:
-	build-images
-	start-db
-	docker-compose up -d wahlinator-backend
+	docker-compose up --build -d wahlinator-db wahlinator-backend
 
 ## start the complete project
 start-complete:
