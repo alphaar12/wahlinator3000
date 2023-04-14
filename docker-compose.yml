@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+    wahlinator-db:
+        build: ./db
+        restart: always
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: wahlinatordb
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: admin
+        container_name: wahlinator-db
+        networks:
+          - backend
+        ports:
+          - '3306:3306'
+    wahlinator-backend:
+        build: ./backend
+        restart: always
+        container_name: wahlinator-backend
+        environment:
+          - SPRING_DATASOURCE_URL=jdbc:mysql://wahlinator-db:3306/wahlinatordb
+          - SPRING_DATASOURCE_USERNAME=admin
+          - SPRING_DATASOURCE_PASSWORD=admin
+          - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        networks:
+          - backend
+          - frontend
+        ports:
+          - '8080:8080'
+        depends_on:
+          - wahlinator-db
+    wahlinator-frontend:
+        build: ./frontend
+        restart: always
+        container_name: wahlinator-frontend
+        networks:
+          - frontend
+        ports:
+          - '4200:80'
+        depends_on:
+          - wahlinator-backend
+networks:
+    backend:  
+    frontend:
