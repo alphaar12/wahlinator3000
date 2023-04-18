@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  addUser(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number, password: String) {
+  addUser(personalNumber: String, firstName: String, lastName: String, birthdate: Date, zipCode: number, password: String) {
     const user = {
       personalNumber: personalNumber,
       firstName: firstName,
