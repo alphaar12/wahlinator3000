@@ -21,7 +21,7 @@ Bei Fragen zum Projekt wenden Sie sich an inf21011@lehre.dhbw-stuttgart.de
 | Angular  | 15.2.4   | false	|
 | MySQL  | current   | false	|
 | Docker  | 19   | false	|
-| Docker-compose  | 3.7   | false	|
+| Docker-compose [^1]  | 3.7   | false	|
 
 
 ## Local setup
@@ -48,3 +48,5 @@ For other commands execute:
 ```shell
 make help
 ```
+
+[^1]: The compose sub-command of the docker executable `docker compose` can also be used instead of `docker-compose`.
