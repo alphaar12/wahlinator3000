@@ -1,18 +1,25 @@
+# check if docker-compose is present, if not use docker compose
+COMPOSE := $(shell command -v docker-compose 2> /dev/null)
+
+ifndef COMPOSE
+    COMPOSE := docker compose
+endif
+
 ## execute the backend tests
 backend-test:
 	mvn -f vote/pom.xml test
 
 ## build the backend project
 build-backend-image:
-	docker-compose build wahlinator-backend 
+	$(COMPOSE) build wahlinator-backend 
 
 ## build the docker image for the backend
 build-db-image:
-	docker-compose build wahlinator-db
+	$(COMPOSE) build wahlinator-db
 
 ## build the docker image for the db migration
 build-frontend-image:
-	docker-compose build wahlinator-frontend
+	$(COMPOSE) build wahlinator-frontend
 
 ## build both backend and db migration image
 build-images:
@@ -21,23 +28,23 @@ build-images:
 
 ## start the database
 start-db:
-	docker-compose up --build -d wahlinator-db
+	$(COMPOSE) up --build -d wahlinator-db
 
 ## start the local infrastructure
 start-db-backend:
-	docker-compose up --build -d wahlinator-db wahlinator-backend
+	$(COMPOSE) up --build -d wahlinator-db wahlinator-backend
 
 ## start the complete project
 start-complete:
-	docker-compose up --build -d wahlinator-db wahlinator-backend wahlinator-frontend
+	$(COMPOSE) up --build -d wahlinator-db wahlinator-backend wahlinator-frontend
 
 ## stop the local infrastructure
 stop:
-	docker-compose down
+	$(COMPOSE) down
 
 ## stop the local infrastructure and clean the volumes (database)
 clean:
-	docker-compose down -v
+	$(COMPOSE) down -v
 
 ## execute frontend tests
 frontend-test:
