@@ -1,0 +1,56 @@
+h1 {
+  margin: 8px 0;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.card {
+  all: unset;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 80px;
+  width: 200px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.card-container .card:not(:last-child) {
+  margin-right: 0;
+}
+
+.card.card.highlight-card span {
+  margin-left: 60px;
+}
+
+a,
+a:visited,
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.card-container .card:not(.highlight-card):hover {
+  transform: translate(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+
+  .card.highlight-card span {
+    margin-left: 72px;
+  }
+
+}

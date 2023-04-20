@@ -1,0 +1,10 @@
+
+
+
+@media screen and (max-width: 767px) {
+
+  .card.highlight-card span {
+    margin-left: 72px;
+  }
+
+}
