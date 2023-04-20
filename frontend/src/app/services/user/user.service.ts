@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environments/environment";
+import { environment } from "../../../environments/environment";
 import { formatDate } from "@angular/common";
 import { registerLocaleData } from '@angular/common';
 import localeDE from "@angular/common/locales/de";
+import {Observable} from "rxjs";
 registerLocaleData(localeDE, "de");
 
 @Injectable({
@@ -38,6 +39,22 @@ export class UserService {
       zipCode: zipCode
     };
     return this.http.put(`${environment.apiUrl}/admin/editUser/${personalNumber}`, user);
+  }
+
+  getPublicContent(): Observable<any> {
+    return this.http.get(`${environment.apiUrl} + all`, { responseType: 'text' });
+  }
+
+  getUserBoard(): Observable<any> {
+    return this.http.get(`${environment.apiUrl} + user`, { responseType: 'text' });
+  }
+
+  getModeratorBoard(): Observable<any> {
+    return this.http.get(`${environment.apiUrl} + mod`, { responseType: 'text' });
+  }
+
+  getAdminBoard(): Observable<any> {
+    return this.http.get(`${environment.apiUrl} + admin`, { responseType: 'text' });
   }
 
 }

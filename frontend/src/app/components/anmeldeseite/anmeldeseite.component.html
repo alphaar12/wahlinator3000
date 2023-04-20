@@ -16,7 +16,7 @@
     <br>
     <div class="button-container">
       <button type="submit"
-
+              (click)="login(personalNumber.value, password.value)"
               [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="accent" class="button">
         Anmelden
       </button>

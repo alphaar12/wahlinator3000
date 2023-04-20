@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-nutzer-anlegen',
@@ -18,7 +19,7 @@ export class NutzerAnlegenComponent {
   errorMessage = '';
   maxDate: Date;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private authService: AuthService, private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.createForm = this.formBuilder.group({
       personalNumber: ['', Validators.required],
       firstName: ['', Validators.required],

@@ -24,6 +24,8 @@ import { NutzerBearbeitenComponent } from "./components/nutzer-bearbeiten/nutzer
 import { WahlAuswahlComponent } from './components/wahl-auswahl/wahl-auswahl.component';
 import { BundestagswahlComponent } from './components/bundestagswahl/bundestagswahl.component';
 
+import { httpInterceptorProviders } from './helpers/http.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,7 @@ import { BundestagswahlComponent } from './components/bundestagswahl/bundestagsw
     MatDatepickerModule,
     MatNativeDateModule,
     {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
+    httpInterceptorProviders,
 
   ],
   bootstrap: [AppComponent]

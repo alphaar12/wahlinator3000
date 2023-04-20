@@ -9,6 +9,7 @@ import {WahlAuswahlComponent} from "./components/wahl-auswahl/wahl-auswahl.compo
 import {BundestagswahlComponent} from "./components/bundestagswahl/bundestagswahl.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'newUser', component: NutzerAnlegenComponent},
   {path: 'admin', component: AdminDashboardComponent},
   {path: 'login', component: AnmeldeseiteComponent},
