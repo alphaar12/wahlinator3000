@@ -31,7 +31,7 @@ export class NutzerAnlegenComponent {
   }
 
   addUser(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number, password: String) {
-    this.userService.addUser(personalNumber, firstName, lastName, new Date(birthdate), zipCode, password).subscribe({
+    this.userService.addUser(personalNumber, firstName, lastName, birthdate, zipCode, password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
