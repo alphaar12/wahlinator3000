@@ -42,7 +42,7 @@
         Passwort generieren
       </button>
       <button type="submit" *ngIf="showButton"
-              (click)="addUser(personalNumber.value, firstName.value, lastName.value, birthdate.value, zipCode.valueAsNumber, password.value)"
+              (click)="register(personalNumber.value, firstName.value, lastName.value, birthdate.value, zipCode.valueAsNumber, password.value)"
               [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="accent" class="button">
         Anlegen
       </button>

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
-import { UserService } from 'src/app/services/user/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {AuthService} from "../../services/auth/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-nutzer-anlegen',
@@ -19,7 +18,7 @@ export class NutzerAnlegenComponent {
   errorMessage = '';
   maxDate: Date;
 
-  constructor(private authService: AuthService, private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.createForm = this.formBuilder.group({
       personalNumber: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -30,8 +29,8 @@ export class NutzerAnlegenComponent {
     this.maxDate = new Date();
   }
 
-  addUser(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number, password: String) {
-    this.userService.addUser(personalNumber, firstName, lastName, birthdate, zipCode, password).subscribe({
+  register(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number, password: String) {
+    this.authService.register(personalNumber, firstName, lastName, birthdate, zipCode, password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
