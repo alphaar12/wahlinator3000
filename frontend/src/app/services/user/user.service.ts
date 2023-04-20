@@ -4,6 +4,7 @@ import {environment} from "../../../environments/environment";
 import {formatDate, registerLocaleData} from "@angular/common";
 import localeDE from "@angular/common/locales/de";
 import {Observable} from "rxjs";
+import {AuthService} from "../auth/auth.service";
 
 registerLocaleData(localeDE, "de");
 
@@ -12,7 +13,7 @@ registerLocaleData(localeDE, "de");
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService) {
   }
 
   getUserByPersonalNumber(personalNumber: String) {
@@ -24,7 +25,7 @@ export class UserService {
       personalNumber: personalNumber,
       firstName: firstName,
       lastName: lastName,
-      birthdate: formatDate(birthdate, "yyyy-MM-dd", "de-DE"),
+      birthdate: this.authService.formatDate(birthdate),
       zipCode: zipCode
     };
     return this.http.put(`${environment.apiUrl}/admin/editUser/${personalNumber}`, user);
