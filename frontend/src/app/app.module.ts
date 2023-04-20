@@ -21,6 +21,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AnmeldeseiteComponent } from "./components/anmeldeseite/anmeldeseite.component";
 import { NutzerBearbeitenComponent } from "./components/nutzer-bearbeiten/nutzer-bearbeiten.component";
+import { WahlAuswahlComponent } from './components/wahl-auswahl/wahl-auswahl.component';
+import { BundestagswahlComponent } from './components/bundestagswahl/bundestagswahl.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NutzerBearbeitenComponent } from "./components/nutzer-bearbeiten/nutzer
     NutzerAnlegenComponent,
     AdminDashboardComponent,
     AnmeldeseiteComponent,
-    NutzerBearbeitenComponent
+    NutzerBearbeitenComponent,
+    WahlAuswahlComponent,
+    BundestagswahlComponent
   ],
   imports: [
     BrowserModule,
