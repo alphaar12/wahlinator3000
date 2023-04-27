@@ -43,7 +43,7 @@ CREATE TABLE roles (
         Region VARCHAR(50),
         Votes INT,
 		Start_Date DATE,
-        End_start DATE
+        End_Date DATE
 );
 
 CREATE TABLE Political_Party (
@@ -156,7 +156,7 @@ INSERT INTO Political_Member(First_Name, Last_Name, Description, Political_Party
 
 -- Elections
 -- Bundestagswahl
-INSERT INTO Election(Type, Region, Votes, Start_Date, End_start) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
+INSERT INTO Election(Type, Region, Votes, Start_Date, End_Date) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
 
 -- Election Political Party
 INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 1, 'Tino Chrupalla, Jens Maier, Siegbert Droese, Karsten Hilse, Andreas Harlaß');
