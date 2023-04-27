@@ -57,7 +57,8 @@ CREATE TABLE Election_Political_Party (
             REFERENCES Election (ID),
         Political_Party_ID INT,
         FOREIGN KEY (Political_Party_ID)
-            REFERENCES Political_Party (ID)
+            REFERENCES Political_Party (ID),
+		Political_Member VARCHAR(250)
 );
 
 CREATE TABLE Political_Member (
@@ -158,28 +159,28 @@ INSERT INTO Political_Member(First_Name, Last_Name, Description, Political_Party
 INSERT INTO Election(Type, Region, Votes, Start_Date, End_start) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
 
 -- Election Political Party
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 1);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 2);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 3);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 4);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 5);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 6);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 7);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 8);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 9);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 10);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 11);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 12);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 13);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 14);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 15);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 16);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 17);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 18);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 19);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 20);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 21);
-INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID) VALUES(1, 22);
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 1, 'Tino Chrupalla, Jens Maier, Siegbert Droese, Karsten Hilse, Andreas Harlaß');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 2, 'Marco Wanderwitz, Dr. Christiane Schenderlein, Dr. Markus Recihel, Yvonne Magwas, Carsten Körber');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 3, 'Katja Kipping, Sören Pellmann, Caren Lay, Dr. Andre Hahn, Clara Anne Bünger');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 4, 'Holger Mann, Kathrin Michel, Detlef Müller, Rasha Nasr, Carlos Kasper');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 5, 'Torsten Herbst, Frank Müller-Rosentritt, Phillipp Hartewig, Ulrike Harzer, Nico Tippelt');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 6, 'Dr. Paula Piechotta, Bernhard Hermann, Merle Spellerberg, Kassem Taher Saleh, Annett Jagiela');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 7, 'Dr. Peter Zimmer, Nico Bartilla, Patrick Kühn-Breisch');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 8, 'Dr. Anke Woschech, Dr. Matthias Peter Reinecke, Dr. Michael Höfler, Dr. Ronny Peters, Dr. Morris Woschech');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 9, 'Maik Müller, Stefan Hartung, Ines Schreiber, Stefan Trautmann, Steve Weißbach');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 10, 'Thomas Weidinger, Dr. Brit Reimann-Bernhardt, Günter Hutschalik, Claudia Drechsel');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 11, 'Anne Herpertz, Steve König, Stephanie Henkel, Manuel Wolf, Thomas Köhler');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 12, 'Sebastian Högen, Uta Strenger, Markus Peter Taubert, Dirk Matthias Zimmermann, Steffen Frank Förster');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 13, 'Thomas Lörinczy, Christine Städter, Jenniffer Sophie Schilling, Hendrik Swoboda, Jana Schilling');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 14, 'Günter Slave, Louisa Baronesse von Freytag-Löringhoff, Philipp Gäbel, Lutz Hartmann, Dr. Helmut Zagermann');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 15, 'Dr. Christoph Heinritz-Bechtel, Anke Althoff, Kerry Charles Cherki, Stefan Heinke, Antje Bäz');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 16, 'Thomas Lamowski, Simon Haustein, Martin Rübner, Eva Vieweg, Samuel Weiß');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 17, 'Tony Gentsch, Petra Rammer, Rico Döhler, David Dschiettig, Udo Sieghart');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 18, 'Andreas Koch, Evelyne Elke Brucks, Herbert Münochw, Maritta Brückner, Helmut-Alexander Kalex');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 19, 'Dominic Eberle, Dominic Ressel, Jakob Schmidt, Philipp Arit, Kristina Weidner');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 20, 'Andreas Kabus, Dr. Frank Seifert');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 21, 'Fanny Francke, Jörg Frister, Tobias Beschow, Matthias Glöckner');
+INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 22, 'Jessica Sabine Roitzsch, Florian Kiel, Dr. Anke Köhler, Thomas Wetendorf, Mathias Radu Neubauer');
 
 -- Election Political Member
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 1);
