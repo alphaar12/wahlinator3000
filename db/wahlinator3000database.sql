@@ -19,7 +19,8 @@ CREATE TABLE users (
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     birthdate DATE,
-    zip_code INT,
+    constituency VARCHAR(50),
+    federal_state VARCHAR(50),
     password VARCHAR(150)
 );
 
