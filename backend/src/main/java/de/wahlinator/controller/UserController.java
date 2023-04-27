@@ -30,7 +30,8 @@ public class UserController {
             userRepository.findByPersonalNumber(personalNumber).get().setFirstName(user.getFirstName());
             userRepository.findByPersonalNumber(personalNumber).get().setLastName(user.getLastName());
             userRepository.findByPersonalNumber(personalNumber).get().setBirthdate(user.getBirthdate());
-            userRepository.findByPersonalNumber(personalNumber).get().setZipCode(user.getZipCode());
+            userRepository.findByPersonalNumber(personalNumber).get().setConstituency(user.getConstituency());
+            userRepository.findByPersonalNumber(personalNumber).get().setFederalState(user.getFederalState());
 
             return ResponseEntity.ok(new MessageResponse("User updated successfully!"));
         } else {

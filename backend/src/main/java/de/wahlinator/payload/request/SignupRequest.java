@@ -18,7 +18,9 @@ public class SignupRequest {
 
     private Date birthdate;
 
-    private int zipCode;
+    private String constituency;
+
+    private String federalState;
 
     private Set<String> role;
 
@@ -73,11 +75,19 @@ public class SignupRequest {
         this.birthdate = birthdate;
     }
 
-    public int getZipCode() {
-        return zipCode;
+    public String getConstituency() {
+        return constituency;
     }
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setConstituency(String constituency) {
+        this.constituency = constituency;
+    }
+
+    public String getFederalState() {
+        return federalState;
+    }
+
+    public void setFederalState(String federalState) {
+        this.federalState = federalState;
     }
 }

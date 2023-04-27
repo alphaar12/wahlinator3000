@@ -34,8 +34,11 @@ public class User implements Serializable {
     @Column(name = "birthdate")
     private Date birthdate;
 
-    @Column(name = "zip_code")
-    private int zipCode;
+    @Column(name = "constituency")
+    private String constituency;
+
+    @Column(name = "federal_state")
+    private String federalState;
 
     @Column(name = "password")
     private String password;
@@ -46,12 +49,13 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(String personalNumber, String firstName, String lastName, Date birthdate, int zipCode, String password) {
+    public User(String personalNumber, String firstName, String lastName, Date birthdate, String constituency, String federalState, String password) {
         this.personalNumber = personalNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
-        this.zipCode = zipCode;
+        this.constituency = constituency;
+        this.federalState = federalState;
         this.password = password;
     }
 
@@ -107,12 +111,20 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getZipCode() {
-        return zipCode;
+    public String getConstituency() {
+        return constituency;
     }
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setConstituency(String constituency) {
+        this.constituency = constituency;
+    }
+
+    public String getFederalState() {
+        return federalState;
+    }
+
+    public void setFederalState(String federalState) {
+        this.federalState = federalState;
     }
 
     public Set<Role> getRoles() {
