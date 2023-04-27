@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS Election_Political_Party;
 DROP TABLE IF EXISTS Election_Political_Member;
 DROP TABLE IF EXISTS Election_Political_Member_Votes;
 DROP TABLE IF EXISTS Election_Political_Party_Votes;
-DROP TABLE IF EXISTS Election;
+DROP TABLE IF EXISTS election;
 DROP TABLE IF EXISTS Political_Member;
 DROP TABLE IF EXISTS Political_Party;
 
@@ -38,24 +38,24 @@ CREATE TABLE user_roles (
             REFERENCES roles (ID)
 );
 
-	CREATE TABLE Election (
+CREATE TABLE election (
         ID INT AUTO_INCREMENT PRIMARY KEY,
-		Type VARCHAR(50),
-        Region VARCHAR(50),
-        Votes INT,
-		Start_Date DATE,
-        End_Date DATE
+		type VARCHAR(50),
+        region VARCHAR(50),
+        votes INT,
+		start_date DATE,
+        end_date DATE
 );
 
 CREATE TABLE Political_Party (
 	ID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(50)
+    name VARCHAR(50)
 );
 
 CREATE TABLE Election_Political_Party (
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
-            REFERENCES Election (ID),
+            REFERENCES election (ID),
         Political_Party_ID INT,
         FOREIGN KEY (Political_Party_ID)
             REFERENCES Political_Party (ID),
@@ -75,7 +75,7 @@ CREATE TABLE Political_Member (
 CREATE TABLE Election_Political_Member (
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
-            REFERENCES Election (ID),
+            REFERENCES election (ID),
         Political_Member_ID INT,
         FOREIGN KEY (Political_Member_ID)
             REFERENCES Political_Member (ID)
@@ -87,27 +87,27 @@ CREATE TABLE Has_Voted_Election (
             REFERENCES users (ID),
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
-            REFERENCES Election (ID)
+            REFERENCES election (ID)
 );
 
 CREATE TABLE Election_Political_Member_Votes(
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
-            REFERENCES Election (ID),
+            REFERENCES election (ID),
 		Political_Member_ID INT,
         FOREIGN KEY (Political_Member_ID)
             REFERENCES Political_Member (ID),
-		Votes INT
+		votes INT
 );
 
 CREATE TABLE Election_Political_Party_Votes(
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
-            REFERENCES Election (ID),
+            REFERENCES election (ID),
 		Political_Party_ID INT,
         FOREIGN KEY (Political_Party_ID)
             REFERENCES Political_Party (ID),
-		Votes INT
+		votes INT
 );
 
 -- FILL DATA
@@ -116,28 +116,28 @@ INSERT INTO roles(ID, name) VALUES(2, 'ROLE_MODERATOR');
 INSERT INTO roles(ID, name) VALUES(3, 'ROLE_ADMIN');
 
 -- Political Partys
-INSERT INTO Political_Party(Name) VALUES('CDU'); -- 1
-INSERT INTO Political_Party(Name) VALUES('SPD'); -- 2
-INSERT INTO Political_Party(Name) VALUES('FDP'); -- 3
-INSERT INTO Political_Party(Name) VALUES('DIE LINKE'); -- 4
-INSERT INTO Political_Party(Name) VALUES('GRÜNE'); -- 5
-INSERT INTO Political_Party(Name) VALUES('AfD'); -- 6
-INSERT INTO Political_Party(Name) VALUES('Die PARTEI'); -- 7
-INSERT INTO Political_Party(Name) VALUES('ÖDP'); -- 8
-INSERT INTO Political_Party(Name) VALUES('V-Partei'); -- 9
-INSERT INTO Political_Party(Name) VALUES('DieBasis'); -- 10
-INSERT INTO Political_Party(Name) VALUES('Tierschutzpartei'); -- 11
-INSERT INTO Political_Party(Name) VALUES('NPD'); -- 12
-INSERT INTO Political_Party(Name) VALUES('FREIE WÄHLER'); -- 13
-INSERT INTO Political_Party(Name) VALUES('PIRATEN'); -- 14
-INSERT INTO Political_Party(Name) VALUES('MLPD'); -- 15
-INSERT INTO Political_Party(Name) VALUES('Bündnis C'); -- 16
-INSERT INTO Political_Party(Name) VALUES('III. Weg'); -- 17
-INSERT INTO Political_Party(Name) VALUES('DKP'); -- 18
-INSERT INTO Political_Party(Name) VALUES('Die Humanisten'); -- 19
-INSERT INTO Political_Party(Name) VALUES('Gesundheitsforschung'); -- 20
-INSERT INTO Political_Party(Name) VALUES('Team Todenhöfer'); -- 21
-INSERT INTO Political_Party(Name) VALUES('Volt'); -- 22
+INSERT INTO Political_Party(name) VALUES('CDU'); -- 1
+INSERT INTO Political_Party(name) VALUES('SPD'); -- 2
+INSERT INTO Political_Party(name) VALUES('FDP'); -- 3
+INSERT INTO Political_Party(name) VALUES('DIE LINKE'); -- 4
+INSERT INTO Political_Party(name) VALUES('GRÜNE'); -- 5
+INSERT INTO Political_Party(name) VALUES('AfD'); -- 6
+INSERT INTO Political_Party(name) VALUES('Die PARTEI'); -- 7
+INSERT INTO Political_Party(name) VALUES('ÖDP'); -- 8
+INSERT INTO Political_Party(name) VALUES('V-Partei'); -- 9
+INSERT INTO Political_Party(name) VALUES('DieBasis'); -- 10
+INSERT INTO Political_Party(name) VALUES('Tierschutzpartei'); -- 11
+INSERT INTO Political_Party(name) VALUES('NPD'); -- 12
+INSERT INTO Political_Party(name) VALUES('FREIE WÄHLER'); -- 13
+INSERT INTO Political_Party(name) VALUES('PIRATEN'); -- 14
+INSERT INTO Political_Party(name) VALUES('MLPD'); -- 15
+INSERT INTO Political_Party(name) VALUES('Bündnis C'); -- 16
+INSERT INTO Political_Party(name) VALUES('III. Weg'); -- 17
+INSERT INTO Political_Party(name) VALUES('DKP'); -- 18
+INSERT INTO Political_Party(name) VALUES('Die Humanisten'); -- 19
+INSERT INTO Political_Party(name) VALUES('Gesundheitsforschung'); -- 20
+INSERT INTO Political_Party(name) VALUES('Team Todenhöfer'); -- 21
+INSERT INTO Political_Party(name) VALUES('Volt'); -- 22
 
 -- Political Members
 INSERT INTO Political_Member(First_Name, Last_Name, Description, Political_Party_ID) VALUES('Michael', 'Klonovsky', 'Autor', 6); -- 1
@@ -157,9 +157,9 @@ INSERT INTO Political_Member(First_Name, Last_Name, Description, Political_Party
 
 -- Elections
 -- Bundestagswahl
-INSERT INTO Election(Type, Region, Votes, Start_Date, End_Date) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
+INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
 
--- Election Political Party
+-- election Political Party
 INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 1, 'Tino Chrupalla, Jens Maier, Siegbert Droese, Karsten Hilse, Andreas Harlaß');
 INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 2, 'Marco Wanderwitz, Dr. Christiane Schenderlein, Dr. Markus Recihel, Yvonne Magwas, Carsten Körber');
 INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 3, 'Katja Kipping, Sören Pellmann, Caren Lay, Dr. Andre Hahn, Clara Anne Bünger');
@@ -183,7 +183,7 @@ INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_
 INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 21, 'Fanny Francke, Jörg Frister, Tobias Beschow, Matthias Glöckner');
 INSERT INTO Election_Political_Party(Election_ID, Political_Party_ID, Political_Member) VALUES(1, 22, 'Jessica Sabine Roitzsch, Florian Kiel, Dr. Anke Köhler, Thomas Wetendorf, Mathias Radu Neubauer');
 
--- Election Political Member
+-- election Political Member
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 1);
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 2);
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 3);
@@ -198,8 +198,8 @@ INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 12);
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 13);
 
-INSERT INTO users (id, personal_number, first_name, last_name, birthdate, constituency, federal_state, password)
+INSERT INTO users(id, personal_number, first_name, last_name, birthdate, constituency, federal_state, password)
 VALUES 	(2147483647, "L28771V9V", "ADMIN", "ADMIN", DATE '2000-05-20', "", "", "Passwort");
 
---    INSERT INTO HatRolle
---    VALUES (1,1);
+INSERT INTO user_roles(user_id, role_id)
+VALUES (2147483647,3);
