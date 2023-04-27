@@ -31,10 +31,10 @@ CREATE TABLE roles (
 
 CREATE TABLE user_roles (
         user_id INT,
-        FOREIGN KEY (users_ID)
+        FOREIGN KEY (user_ID)
             REFERENCES users (ID),
         role_id INT,
-        FOREIGN KEY (roles_ID)
+        FOREIGN KEY (role_ID)
             REFERENCES roles (ID)
 );
 
