@@ -15,25 +15,25 @@ DROP TABLE IF EXISTS Political_Party;
 -- CREATE TABLES
 CREATE TABLE users (
 	ID INT AUTO_INCREMENT PRIMARY KEY,
-    personal_number VARCHAR(50),
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    birthdate DATE,
-    constituency VARCHAR(50),
-    federal_state VARCHAR(50),
-    password VARCHAR(150)
+	personal_number VARCHAR(50),
+	first_name VARCHAR(50),
+	last_name VARCHAR(50),
+	birthdate DATE,
+	constituency VARCHAR(50),
+	federal_state VARCHAR(50),
+	password VARCHAR(150)
 );
 
 CREATE TABLE roles (
 	ID INT PRIMARY KEY,
-    name VARCHAR(50)
+	name VARCHAR(50)
 );
 
-    CREATE TABLE HasRole (
-        users_ID INT,
+CREATE TABLE user_roles (
+        user_id INT,
         FOREIGN KEY (users_ID)
             REFERENCES users (ID),
-        roles_ID INT,
+        role_id INT,
         FOREIGN KEY (roles_ID)
             REFERENCES roles (ID)
 );
@@ -198,8 +198,8 @@ INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 12);
 INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 13);
 
-INSERT INTO users (id, personal_number, first_name, last_name, birthdate, zip_code, password)
-VALUES 	(2147483647, "L28771V9V","Corvin","Pape",DATE '2000-05-20',27432,"Passwort");
+INSERT INTO users (id, personal_number, first_name, last_name, birthdate, constituency, federal_state, password)
+VALUES 	(2147483647, "L28771V9V", "ADMIN", "ADMIN", DATE '2000-05-20', "", "", "Passwort");
 
 --    INSERT INTO HatRolle
 --    VALUES (1,1);
