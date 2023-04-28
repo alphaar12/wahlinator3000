@@ -49,7 +49,7 @@ CREATE TABLE election (
 
 CREATE TABLE political_party (
 	ID INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50),
+    name VARCHAR(250),
     abbrevation VARCHAR(50)
 );
 
