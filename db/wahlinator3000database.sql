@@ -1,16 +1,16 @@
 START TRANSACTION;
 
-DROP TABLE IF EXISTS Has_Voted_Election;
-DROP TABLE IF EXISTS HasRole;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS user_roles;
+DROP TABLE IF EXISTS election;
+DROP TABLE IF EXISTS Political_Party;
 DROP TABLE IF EXISTS Election_Political_Party;
 DROP TABLE IF EXISTS Election_Political_Member;
 DROP TABLE IF EXISTS Election_Political_Member_Votes;
 DROP TABLE IF EXISTS Election_Political_Party_Votes;
-DROP TABLE IF EXISTS election;
 DROP TABLE IF EXISTS Political_Member;
-DROP TABLE IF EXISTS Political_Party;
+DROP TABLE IF EXISTS Has_Voted_Election;
 
 -- CREATE TABLES
 CREATE TABLE users (
