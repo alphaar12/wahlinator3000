@@ -6,10 +6,10 @@ DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS election;
 DROP TABLE IF EXISTS political_party;
 DROP TABLE IF EXISTS election_political_party;
-DROP TABLE IF EXISTS Election_Political_Member;
-DROP TABLE IF EXISTS Election_Political_Member_Votes;
+DROP TABLE IF EXISTS Election_political_member;
+DROP TABLE IF EXISTS Election_political_member_Votes;
 DROP TABLE IF EXISTS Election_political_party_Votes;
-DROP TABLE IF EXISTS Political_Member;
+DROP TABLE IF EXISTS political_member;
 DROP TABLE IF EXISTS Has_Voted_Election;
 
 -- CREATE TABLES
@@ -63,23 +63,23 @@ CREATE TABLE election_political_party (
 		political_members VARCHAR(250)
 );
 
-CREATE TABLE Political_Member (
+CREATE TABLE political_member (
 		ID INT AUTO_INCREMENT PRIMARY KEY,
-        First_Name VARCHAR(50),
-        Last_Name VARCHAR(50),
+        first_name VARCHAR(50),
+        last_name VARCHAR(50),
         Description VARCHAR(50),
         political_party_ID INT,
         FOREIGN KEY (political_party_ID)
             REFERENCES political_party (ID)
 );
 
-CREATE TABLE Election_Political_Member (
+CREATE TABLE Election_political_member (
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
             REFERENCES election (ID),
-        Political_Member_ID INT,
-        FOREIGN KEY (Political_Member_ID)
-            REFERENCES Political_Member (ID)
+        political_member_ID INT,
+        FOREIGN KEY (political_member_ID)
+            REFERENCES political_member (ID)
 );
 
 CREATE TABLE Has_Voted_Election (
@@ -91,13 +91,13 @@ CREATE TABLE Has_Voted_Election (
             REFERENCES election (ID)
 );
 
-CREATE TABLE Election_Political_Member_Votes(
+CREATE TABLE Election_political_member_Votes(
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
             REFERENCES election (ID),
-		Political_Member_ID INT,
-        FOREIGN KEY (Political_Member_ID)
-            REFERENCES Political_Member (ID),
+		political_member_ID INT,
+        FOREIGN KEY (political_member_ID)
+            REFERENCES political_member (ID),
 		votes INT
 );
 
@@ -141,20 +141,20 @@ INSERT INTO political_party(name, abbrevation) VALUES('Team Todenhöfer – Die 
 INSERT INTO political_party(name, abbrevation) VALUES('Volt Europa', 'Volt'); -- 22
 
 -- Political Members
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Michael', 'Klonovsky', 'Autor', 6); -- 1
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Frank', 'Heinrich', 'Bundestagsabgeordneter', 1); -- 2
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Tim', 'Detzner', 'Angestellter', 4); -- 3
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Detlef', 'Müller', 'Lokomotivführer', 2); -- 4
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Frank', 'Müller-Rosentritt', 'Bundestagsabgeordneter', 3); -- 5
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Karola', 'Köpferl', 'Sozialpädagogin', 5); -- 6
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Paul Thomas', 'Vogel', 'Diplom-Ingenuer', 7); -- 7
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Bert', 'Rohne', 'Staatlich anerkannter Sozialpädagoge', 8); -- 8
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Thomas', 'Lörinczy', 'Kaufmann', 9); -- 9
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Norman', 'Lienow', 'DV-Kaufmann', 10); -- 10
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Daniel', 'Richter', 'Diplom-Informatiker', Null); -- 11
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Jörg Alexander', 'Weidemann', 'Krankenpfleger', Null); -- 12
-INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('Hans Sieghard', 'Röhder', 'Controller IHK', Null); -- 13
--- INSERT INTO Political_Member(First_Name, Last_Name, Description, political_party_ID) VALUES('', '', '', ); -- 
+INSERT INTO political_member(first_name, Last_Name, Description, political_party_ID) VALUES('Michael', 'Klonovsky', 'Autor', 6); -- 1
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Frank', 'Heinrich', 'Bundestagsabgeordneter', 1); -- 2
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Tim', 'Detzner', 'Angestellter', 4); -- 3
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Detlef', 'Müller', 'Lokomotivführer', 2); -- 4
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Frank', 'Müller-Rosentritt', 'Bundestagsabgeordneter', 3); -- 5
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Karola', 'Köpferl', 'Sozialpädagogin', 5); -- 6
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Paul Thomas', 'Vogel', 'Diplom-Ingenuer', 7); -- 7
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Bert', 'Rohne', 'Staatlich anerkannter Sozialpädagoge', 8); -- 8
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Thomas', 'Lörinczy', 'Kaufmann', 9); -- 9
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Norman', 'Lienow', 'DV-Kaufmann', 10); -- 10
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Daniel', 'Richter', 'Diplom-Informatiker', Null); -- 11
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Jörg Alexander', 'Weidemann', 'Krankenpfleger', Null); -- 12
+INSERT INTO political_member(lirstnname, Last_Name, Description, political_party_ID) VALUES('Hans Sieghard', 'Röhder', 'Controller IHK', Null); -- 13
+-- INSERT INTO political_memblr(finst_name, Last_Name, Description, political_party_ID) VALUES('', '', '', l; --n
 
 -- Elections
 -- Bundestagswahl
@@ -185,19 +185,19 @@ INSERT INTO election_political_party(Election_ID, political_party_ID, political_
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 22, 'Jessica Sabine Roitzsch, Florian Kiel, Dr. Anke Köhler, Thomas Wetendorf, Mathias Radu Neubauer');
 
 -- election Political Member
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 1);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 2);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 3);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 4);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 5);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 6);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 7);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 8);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 9);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 10);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 11);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 12);
-INSERT INTO Election_Political_Member(Election_ID, Political_Member_ID) VALUES(1, 13);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 1);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 2);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 3);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 4);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 5);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 6);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 7);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 8);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 9);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 10);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 11);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 12);
+INSERT INTO Election_political_member(Election_ID, political_member_ID) VALUES(1, 13);
 
 INSERT INTO users(id, personal_number, first_name, last_name, birthdate, constituency, federal_state, password)
 VALUES 	(2147483647, "L28771V9V", "ADMIN", "ADMIN", DATE '2000-05-20', "", "", "Passwort");
