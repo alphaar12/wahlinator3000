@@ -200,7 +200,7 @@ INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1, 13);
 
 INSERT INTO users(id, personal_number, first_name, last_name, birthdate, constituency, federal_state, password)
-VALUES 	(2147483647, "L28771V9V", "ADMIN", "ADMIN", DATE '2000-05-20', "", "", "Passwort");
+VALUES 	(2147483647, "123456789", "ADMIN", "ADMIN", DATE '2000-01-01', "", "", "21232f297a57a5a743894a0e4a801fc3");
 
 INSERT INTO user_roles(user_id, role_id)
 VALUES (2147483647,3);

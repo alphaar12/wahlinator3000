@@ -1,5 +1,6 @@
 package de.wahlinator.controller;
 
+import de.wahlinator.security.Md5PasswordEncoder;
 import de.wahlinator.entity.ERole;
 import de.wahlinator.entity.Role;
 import de.wahlinator.entity.User;
@@ -18,9 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -43,7 +42,9 @@ public class AuthController {
     RoleRepository roleRepository;
 
     @Autowired
-    PasswordEncoder encoder;
+    public Md5PasswordEncoder encoder() {
+        return new Md5PasswordEncoder();
+    }
 
     @Autowired
     JwtUtils jwtUtils;
@@ -85,7 +86,7 @@ public class AuthController {
                 signUpRequest.getBirthdate(),
                 signUpRequest.getConstituency(),
                 signUpRequest.getFederalState(),
-                encoder.encode(signUpRequest.getPassword()));
+                encoder().encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
