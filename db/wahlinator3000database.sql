@@ -183,9 +183,9 @@ INSERT INTO political_member(first_name, Last_Name, Description, political_Party
 -- Bundestagswahl
 INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
 -- Landtag BW
-INSERT INTO Election(type, region, votes, atart_date, end_date) VALUES('Landtag BW', 'Stuttgart', 1, '2023.04.01', '2023.10.01');
+INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Landtag BW', 'Stuttgart', 1, '2023.04.01', '2023.10.01');
 -- Landtag Saarland
-INSERT INTO Election(type, region, votes, atart_date, end_date) VALUES('Landtag Saarland', 'Saabrücken', 1, '2023.04.01', '2023.10.01');
+INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Landtag Saarland', 'Saabrücken', 1, '2023.04.01', '2023.10.01');
 
 -- election Political Party
 -- Bundestag
