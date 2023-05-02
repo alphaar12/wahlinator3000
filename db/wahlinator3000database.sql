@@ -176,7 +176,7 @@ INSERT INTO political_member(first_name, Last_Name, Description, political_Party
 INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Jonathan', 'Heckert', 'Freiwilliges ökologisches Jahr, Stuttgart', 23); -- 24
 INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Christoph', 'Dr. Hueck', 'Biologe, Dozent, Tübingen', 24); -- 25
 INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Morits', 'Klug', 'Student, Stuttgart', 22); -- 26
-INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Vasim', 'Barkavi', 'Werkstoffingeneur, B. Sc., Stuttgart', None); -- 27
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Vasim', 'Barkavi', 'Werkstoffingeneur, B. Sc., Stuttgart', Null); -- 27
 -- INSERT INTO political_memblr(finst_name, Last_Name, Description, political_party_ID) VALUES('', '', '', l; --n
 
 -- Elections
