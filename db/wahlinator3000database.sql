@@ -117,6 +117,7 @@ INSERT INTO roles(ID, name) VALUES(2, 'ROLE_MODERATOR');
 INSERT INTO roles(ID, name) VALUES(3, 'ROLE_ADMIN');
 
 -- Political Parties
+-- Bundestag
 INSERT INTO political_party(name, abbrevation) VALUES('Christlich Demokratische Union Deutschlands', 'CDU'); -- 1
 INSERT INTO political_party(name, abbrevation) VALUES('Sozialdemokratische Partei Deutschlands', 'SPD'); -- 2
 INSERT INTO political_party(name, abbrevation) VALUES('Freie Demokratische Partei', 'FDP'); -- 3
@@ -139,8 +140,12 @@ INSERT INTO political_party(name, abbrevation) VALUES('Partei der Humanisten', '
 INSERT INTO political_party(name, abbrevation) VALUES('Partei für schulmedizinische Verjüngungsforschung', 'Gesundheitsforschung'); -- 20
 INSERT INTO political_party(name, abbrevation) VALUES('Team Todenhöfer – Die Gerechtigkeitspartei', 'Team Todenhöfer'); -- 21
 INSERT INTO political_party(name, abbrevation) VALUES('Volt Europa', 'Volt'); -- 22
+-- Landtag BW
+INSERT INTO political_party(name, abbrevation) VALUES('Klimaliste Baden-Würtenberg', 'KlimalisteBW'); -- 23
+INSERT INTO political_party(name, abbrevation) VALUES('Partei WIR2020', 'W2020'); -- 24
 
 -- Political Members
+-- Bundestag
 INSERT INTO political_member(first_name, Last_Name, Description, political_party_ID) VALUES('Michael', 'Klonovsky', 'Autor', 6); -- 1
 INSERT INTO political_member(first_name, Last_Name, Description, political_party_ID) VALUES('Frank', 'Heinrich', 'Bundestagsabgeordneter', 1); -- 2
 INSERT INTO political_member(first_name, Last_Name, Description, political_party_ID) VALUES('Tim', 'Detzner', 'Angestellter', 4); -- 3
@@ -154,13 +159,31 @@ INSERT INTO political_member(first_name, Last_Name, Description, political_party
 INSERT INTO political_member(first_name, Last_Name, Description, political_party_ID) VALUES('Daniel', 'Richter', 'Diplom-Informatiker', Null); -- 11
 INSERT INTO political_member(first_name, Last_Name, Description, political_party_ID) VALUES('Jörg Alexander', 'Weidemann', 'Krankenpfleger', Null); -- 12
 INSERT INTO political_member(first_name, Last_Name, Description, political_party_ID) VALUES('Hans Sieghard', 'Röhder', 'Controller IHK', Null); -- 13
+-- Landtag BW
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Aras', 'Muhterem', 'Landtagspräsidentin, Dipl. -Ökologin, Stuttgart', 5); -- 14
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Ruth', 'Schagemann', 'Architektin, Stuttgart', 1); -- 15
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Steffen', 'Degler', 'Taxifahrer, Backnang', 6); -- 16
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Sascha', 'Dr. Meßmer', 'Wirtschaftsförderer, Stuttgart', 2); -- 17
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Johanna', 'Molitor', 'Parlamentsrätin, Stuttgart', 3); -- 18
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Filippo', 'Capezzone', 'Agrarwissenschaftler, Stuttgart', 4); -- 19
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Iris', 'Baur', 'Altenplfegehelferin, Stuttgart', 8); -- 20
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Oliver', 'Burkardsmaier', 'Programmierer, Stuttgart', 14); -- 21
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Ina', 'Schumann', 'Lehrerin, Stuttgart', 7); -- 22
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Markus', 'Mangold', 'Geograph, Leinfelden-Echterdingen', 13); -- 23
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Jonathan', 'Heckert', 'Freiwilliges ökologisches Jahr, Stuttgart', 23); -- 24
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Christoph', 'Dr. Hueck', 'Biologe, Dozent, Tübingen', 24); -- 25
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Morits', 'Klug', 'Student, Stuttgart', 22); -- 26
+INSERT INTO political_member(first_name, Last_Name, Description, political_Party_ID) VALUES('Vasim', 'Barkavi', 'Werkstoffingeneur, B. Sc., Stuttgart', None); -- 27
 -- INSERT INTO political_memblr(finst_name, Last_Name, Description, political_party_ID) VALUES('', '', '', l; --n
 
 -- Elections
 -- Bundestagswahl
 INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
+-- Landtag BW
+INSERT INTO Election(type, region, votes, atart_date, end_date) VALUES('Landtag BW', 'Stuttgart', 1, '2023.04.01', '2023.10.01');
 
 -- election Political Party
+-- Bundestag
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 1, 'Tino Chrupalla, Jens Maier, Siegbert Droese, Karsten Hilse, Andreas Harlaß');
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 2, 'Marco Wanderwitz, Dr. Christiane Schenderlein, Dr. Markus Recihel, Yvonne Magwas, Carsten Körber');
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 3, 'Katja Kipping, Sören Pellmann, Caren Lay, Dr. Andre Hahn, Clara Anne Bünger');
@@ -185,6 +208,7 @@ INSERT INTO election_political_party(Election_ID, political_party_ID, political_
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 22, 'Jessica Sabine Roitzsch, Florian Kiel, Dr. Anke Köhler, Thomas Wetendorf, Mathias Radu Neubauer');
 
 -- election Political Member
+-- Bundestag
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1, 1);
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1, 2);
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1, 3);
@@ -198,6 +222,22 @@ INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1, 11);
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1, 12);
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(1, 13);
+-- Landtag BW
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 14);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 15);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 16);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 17);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 18);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 19);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 20);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 21);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 22);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 23);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 24);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 25);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 26);
+INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 27);
+
 
 INSERT INTO users(id, personal_number, first_name, last_name, birthdate, constituency, federal_state, password)
 VALUES 	(2147483647, "123456789", "ADMIN", "ADMIN", DATE '2000-01-01', "", "", "21232f297a57a5a743894a0e4a801fc3");
