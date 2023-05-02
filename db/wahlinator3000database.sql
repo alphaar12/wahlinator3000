@@ -143,6 +143,9 @@ INSERT INTO political_party(name, abbrevation) VALUES('Volt Europa', 'Volt'); --
 -- Landtag BW
 INSERT INTO political_party(name, abbrevation) VALUES('Klimaliste Baden-Würtenberg', 'KlimalisteBW'); -- 23
 INSERT INTO political_party(name, abbrevation) VALUES('Partei WIR2020', 'W2020'); -- 24
+-- Landtag Saarland
+INSERT INTO political_party(name, abbrevation) VALUES('Familien-Partei Deutschlands', 'FAMILIE'); -- 25
+INSERT INTO political_party(name, abbrevation) VALUES('bunt.saar - sozial-ökologische liste', 'bunt.saar'); -- 26
 
 -- Political Members
 -- Bundestag
@@ -181,6 +184,8 @@ INSERT INTO political_member(first_name, Last_Name, Description, political_Party
 INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
 -- Landtag BW
 INSERT INTO Election(type, region, votes, atart_date, end_date) VALUES('Landtag BW', 'Stuttgart', 1, '2023.04.01', '2023.10.01');
+-- Landtag Saarland
+INSERT INTO Election(type, region, votes, atart_date, end_date) VALUES('Landtag Saarland', 'Saabrücken', 1, '2023.04.01', '2023.10.01');
 
 -- election Political Party
 -- Bundestag
@@ -206,6 +211,21 @@ INSERT INTO election_political_party(Election_ID, political_party_ID, political_
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 20, 'Andreas Kabus, Dr. Frank Seifert');
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 21, 'Fanny Francke, Jörg Frister, Tobias Beschow, Matthias Glöckner');
 INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(1, 22, 'Jessica Sabine Roitzsch, Florian Kiel, Dr. Anke Köhler, Thomas Wetendorf, Mathias Radu Neubauer');
+-- Landtag Saarland
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 1, 'a)Kreiswahlvorschlag 1.Peter Strobel 2.Anja Wagner-Scheid 3.Bernd Wegner 4.Sascha Zehner 5.Petra Fretter b)Landeswahlvorschlag 1.Tobias Hans 2.Jutta Schmitt-Lang 3.Marc Daniel Speicher 4.Ute Mücklich-Heinrich 5.Dr. Chrisopher Salm');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 2, 'a)Kreiswahlvorschlag 1.Ulrich Commercon 2.Stephanie Meiser 3.Pascal Arweiler 4.Kira Braun 5.Sascha Haas b)Landeswahlvorschlag 1.Anke Rehlinger 2.Reinhold Jost 3. Christine Streichert-Clivot 4.Timo Ahr 5.Kira Braun');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 4, 'a)Kreiswahlvorschlag 1.Brigit Huonker 2.Mark Baumeister 3.Jasmin Pies 4.Horst Saar 5.Dunja Reichert b)Landeswahlvorschlag 1.Barbara Spaniol 2.Andrea Neumann 3.Dagmar Ensch-Engel 4. Mark Scheibel 5.Udo Reden-Buschbacher');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 6, 'a)Kreiswahlvorschlag 1.Josef Dörr 2.Dieter Müller 3.Boris Huebner 4.Hermann Göttel 5.Heidemarie Schon');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 5, 'a)Kreiswahlvorschlag 1.Anne Lahoda 2.Patrick Sebastian Ginsbach 3.Marlena Ruth 4.Justin Jaw Hayo 5.Barbara Klein-Braun b)Landeswahlvorschlag 1.Lisa Becker 2.Sören Bund-Becker 3.Patrick Schumann 4.Volker Morbe 5.Lara Bütermann');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 3, 'a)Kreiswahlvorschlag 1.Roland König 2.Alexander Heinz 3.Heike Müller 4.Holger Fuchs 5.Danny Marlon Meyer b)Landeswahlvorschlag 1.Angelika Hießerich-Peter 2.Marcel Mucker 3.Dr. Helmut Isringhaus 4.Martina Kirsch 5.Julien Francois Simons');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 25, 'a)Kreiswahlvorschlag 1.Amon Gadell 2.Stefan Rohe 3.Barbara Reiß b)Landeswahlvorschlag 1.Albrecht Hauck 2.Helmut Antis 3.Susanne Baumann 4.Roland Körner 5.Lothar Reiß');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 13, 'a)Kreiswahlvorschlag 1.Nadine Puhl 2.Gernot Abrahams 3.Martina Scheller 4.Uwe Schneider 5.Bernd Schlachter b)Landeswahlvorschlag 1.Uwe Andreas Kammer 2.Prof. Dr. Vanessa Mertins 3.Clemens Werle 4.Verena Lehnert 5.Ralf Baureis');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 10, 'a)Kreiswahlvorschlag 1.Jörg Bur 2.Dominik Rester 3.Helge Reichert 4.Mauro Mancini 5.Susanne Bur b)Landeswahlvorschlag 1.Hans-Theo Both 2.Mauro Marcini 3.Helge Reichert 4.Ute Weisang 5.Peter Minke');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 26, 'a)Kreiswahlvorschlag 1.Undine Löhfelm 2.Camilo Berstecher 3.Sadija Kavgic 4.Ekkehart Schmidt 5.Anna Haßdenteufel b)Landeswahlvorschlag 1.Dr. Werner Ried 2. Heike Hanson 3.Ekkehart Schmidt 4.Anna Haßdenteufel 5.Winfried Hoffmann');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 19, 'a)Kreiswahlvorschlag 1.Fabian Grünewald b)Landeswahlvorschlag 1.Leonie Neu 2.Fabian Grünewald 3.Lukas Seiler');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 7, 'a)Kreiswahlvorschlag 1.Michael Franke 2.Almut Deeß 3.Sven Sonnhalter 4.Nicole Bornbacher 5.Christian Remark b)Landeswahlvorschlag 1.Michael Franke 2.Almut Deeß 3.Jimmy Both 4.Nicole Brornbacher 5.Sven Sonnhalter');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 11, 'a)Kreiswahlvorschlag 1.Klaus Stockum 2.Sandra Lauer-Zimmermann 3.Doris Bauer 4.Margarete Blasen b)Landeswahlvorschlag 1.Thomas Weber 2.Andreas Schäfer 3.Pia Bauer 4.Monika Bugs 5.Katrin Schuhn');
+INSERT INTO election_political_party(Election_ID, political_party_ID, political_members) VALUES(3, 22, 'a)Kreiswahlvorschlag 1.Sarah Hamm 2.Erik Hoffmann b) Landeswahlvorschlag 1.Sarah Hamm 2.Martin Duda 3.Layla Emmerich 4.Marc Frantz 5.Alexander Fadel');
 
 -- election Political Member
 -- Bundestag
