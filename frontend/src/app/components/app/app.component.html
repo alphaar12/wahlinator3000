@@ -13,15 +13,23 @@
     </button>
   </div>
   <span (mouseleave)="menuTrigger.closeMenu()">
-    <mat-menu #navMenu="matMenu" xPosition="before" [overlapTrigger]="false" style="max-width: none !important">
-      <div class="menu">
-        <button class="menuButton" mat-raised-button color="primary"
-                routerLink="/faq">FAQ</button>
-        <a class="menuButton" mat-raised-button color="primary"
-                href="https://archiv.wahl-o-mat.de/bundestagswahl2021/app/main_app.html">Wahl-O-Mat</a>
-        <button class="menuButton" *ngIf="isLoggedIn" mat-raised-button color="primary"
-              routerLink="/" (click)="logout()">Abmelden</button>
-      </div>
+    <mat-menu #navMenu="matMenu" xPosition="before"
+              [overlapTrigger]="false" style="max-width: none !important;">
+        <button mat-menu-item class="menuButton" color="primary"
+                routerLink="/faq">
+          <mat-icon>question_answer</mat-icon>
+          <p>FAQ</p>
+        </button>
+        <a mat-menu-item class="menuButton" color="primary"
+                href="https://archiv.wahl-o-mat.de/bundestagswahl2021/app/main_app.html">
+          <mat-icon>how_to_vote</mat-icon>
+          <p>Wahl-O-Mat</p>
+        </a>
+        <button mat-menu-item class="menuButton" *ngIf="isLoggedIn" color="primary"
+              routerLink="/" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <p>Abmelden</p>
+        </button>
     </mat-menu>
   </span>
 
