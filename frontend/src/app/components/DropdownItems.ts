@@ -1297,8 +1297,6 @@ export class DropdownItems {
       }
     })
     // @ts-ignore
-    console.log(newConstituencies);
-    // @ts-ignore
     return newConstituencies;
   }
 }

@@ -36,7 +36,7 @@ export class NutzerBearbeitenComponent {
       constituency: ['', Validators.required],
     });
     this.maxDate = new Date();
-    this.constituencies = DropdownItems.constituencies;
+    this.constituencies = [];
     this.federalStates = DropdownItems.federalStates;
   }
 
@@ -50,11 +50,11 @@ export class NutzerBearbeitenComponent {
         this.editForm.get("lastName")?.setValue(this.userDetails.lastName);
         this.editForm.get("birthdate")?.setValue(this.userDetails.birthdate);
         this.editForm.get("federalState")?.setValue(this.userDetails.federalState);
+        this.constituencies = DropdownItems.checkConstituencies(this.userDetails.federalState);
         this.editForm.get("constituency")?.setValue(this.userDetails.constituency);
         this.showButton = true;
       },
       error: err => {
-        console.log(err);
         this.errorMessage = err.error.message;
         this.snackBar.open('Nutzer konnte nicht geladen werden! ' + this.errorMessage, 'OK', {
           duration: 3000
@@ -66,20 +66,22 @@ export class NutzerBearbeitenComponent {
   editUser(personalNumber: String, firstName: String, lastName: String, birthdate: any, federalState: String, constituency: String) {
     this.userService.editUser(personalNumber, firstName, lastName, birthdate, federalState, constituency).subscribe({
       next: data => {
-        console.log(data);
         this.isSuccessful = true;
         this.snackBar.open('Nutzer wurde erfolgreich bearbeitet!', 'OK', {
           duration: 3000
         });
       },
       error: err => {
-        console.log(err);
         this.errorMessage = err.error.message;
         this.snackBar.open('Nutzer konnte nicht bearbeitet werden! ' + this.errorMessage, 'OK', {
           duration: 3000
         });
       }
     })
+  }
+
+  checkAvailableConstituencies(federalState: string) {
+    this.constituencies = DropdownItems.checkConstituencies(federalState);
   }
 
   ngOnInit(): void {
