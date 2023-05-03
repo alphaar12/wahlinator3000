@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from "../../services/auth/auth.service";
-import {DropdownItems} from "../DropdownItems";
+import { AuthService } from "../../../services/auth/auth.service";
+import {DropdownItems} from "../../DropdownItems";
 
 @Component({
   selector: 'app-nutzer-anlegen',

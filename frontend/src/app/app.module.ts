@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './components/app/app.component';
-import { NutzerAnlegenComponent } from './components/nutzer-anlegen/nutzer-anlegen.component';
+import { NutzerAnlegenComponent } from './components/admin-dashboard/nutzer-anlegen/nutzer-anlegen.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, RouterOutlet } from "@angular/router";
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
@@ -20,7 +20,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AnmeldeseiteComponent } from "./components/anmeldeseite/anmeldeseite.component";
-import { NutzerBearbeitenComponent } from "./components/nutzer-bearbeiten/nutzer-bearbeiten.component";
+import { NutzerBearbeitenComponent } from "./components/admin-dashboard/nutzer-bearbeiten/nutzer-bearbeiten.component";
 import { WahlAuswahlComponent } from './components/wahl-auswahl/wahl-auswahl.component';
 import { BundestagswahlComponent } from './components/bundestagswahl/bundestagswahl.component';
 

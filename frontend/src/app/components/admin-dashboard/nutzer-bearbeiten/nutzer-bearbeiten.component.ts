@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../services/user/user.service";
+import {UserService} from "../../../services/user/user.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {DropdownItems} from "../DropdownItems";
+import {DropdownItems} from "../../DropdownItems";
 
 interface federalState {
   value: string;
