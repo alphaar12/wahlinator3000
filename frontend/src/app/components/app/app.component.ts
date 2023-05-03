@@ -23,6 +23,8 @@ export class AppComponent {
         console.log(data);
         this.isSuccessful = true;
         this.isLoggedIn = false;
+        this.storageService.clean();
+        window.location.reload();
         this.snackBar.open('Sie wurden abgemeldet!', 'OK', {
           duration: 3000
         });

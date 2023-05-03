@@ -41,12 +41,15 @@ export class AnmeldeseiteComponent {
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
         console.log(data);
-        if(data.roles[0] == 'ROLE_USER'){
-          this.router.navigate([`/wahlAuswahl`]);
-        }else{
-          this.router.navigate([`/admin`]);
+        if (data.roles[0] == 'ROLE_USER') {
+          this.router.navigate([`/wahlAuswahl`]).then(() => {
+            window.location.reload();
+          });
+        } else {
+          this.router.navigate([`/admin`]).then(() => {
+            window.location.reload();
+          });
         }
-        //this.reloadPage();
       },
       error: err => {
         this.errorMessage = err.error.message;
@@ -56,10 +59,6 @@ export class AnmeldeseiteComponent {
         });
       }
     });
-  }
-
-  reloadPage(): void {
-    window.location.reload();
   }
 
 }
