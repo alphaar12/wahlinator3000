@@ -31,6 +31,9 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTabsModule} from "@angular/material/tabs";
+import { LandtagswahlbwComponent } from './components/landtagswahlbw/landtagswahlbw.component';
+import { LandtagswahlslComponent } from './components/landtagswahlsl/landtagswahlsl.component';
+import { Landtagswahl1Component } from './components/landtagswahl1/landtagswahl1.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import {MatTabsModule} from "@angular/material/tabs";
     NutzerBearbeitenComponent,
     WahlAuswahlComponent,
     BundestagswahlComponent,
-    FaqComponent
+    FaqComponent,
+    LandtagswahlbwComponent,
+    LandtagswahlslComponent,
+    Landtagswahl1Component
   ],
     imports: [
         BrowserModule,

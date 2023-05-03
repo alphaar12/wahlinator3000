@@ -3,28 +3,7 @@
   margin: auto;
   padding: 5px 5px 5px 5px;
   border-style: solid;
-}
-
-.erststimme {
-  padding: 10px 10px 10px 10px;
-  flex: 1;
-}
-
-
-.zweitstimme {
-  padding: 10px 10px 10px 10px;
-  color: #00BFFF;
-  flex: 1;
-}
-
-.bild {
-  max-width: 100%;
-  height: auto;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
+  background-color: #FBF8EF;
 }
 
 
@@ -48,27 +27,3 @@ Input[type="submit"]:hover {
   transform: translate(-3px);
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
 }
-
-
-
-@media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .erststimme {
-    background: #F2F2F2;
-  }
-
-  .zweitstimme{
-    background: #E0ECF8;
-  }
-
-}
-
-#groß {
-  font-size: 50px;
-}
-
-
-

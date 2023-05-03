@@ -1,0 +1,65 @@
+
+<body>
+
+<div style="text-align: center;">
+  <h1><b>STIMMZETTEL</b><br></h1>
+  <h3>Für die Wahl zum Landtag in <div id="bundesland"></div> <br>
+    im Wahlkreis <div id="wahlkreis">
+      am <span id="date"></span><br><br></div></h3>
+  <h2 id="groß"><b>Sie haben 2 Stimmen</b><br><br></h2>
+</div>
+
+<form action="submit.php" method="post" onsubmit="return validateForm()">
+  <div class="container">
+    <div class="wahlkreisstimme">
+      <div style="text-align: right;">
+        <img
+          class="bild"
+          src="assets/landtagl.png"
+        />
+        <h2><b>Hier 1 Stimme</b><br></h2>
+        <h3>für die Wahl<br></h3>
+        <h2><b>eines
+          /einer Wahlkreisabgeordneten<br><br><br>Wahlkreisstimme</b></h2>
+      </div>
+      <label for="wahlkreisstimme"></label>
+
+      <div class="auswahl">
+        <input type="checkbox" id="option1a" name="wahlkreisstimme" value="Option 1A">
+        <label for="option1a">Option 1A</label><br>
+        <input type="checkbox" id="option1b" name="wahlkreisstimme" value="Option 1B">
+        <label for="option1b">Option 1B</label><br>
+        <input type="checkbox" id="option1c" name="wahlkreisstimme" value="Option 1C">
+        <label for="option1c">Option 1C</label><br>
+      </div>
+
+    </div><br><br><br><br>
+
+    <div class="landesstimme">
+      <div style="text-align: left;">
+        <img
+          class="bild"
+          src="assets/landtagr.png"
+        />
+        <h2><b>Hier 1 Stimme</b><br></h2>
+        <h3>für die Wahl<br></h3>
+        <h2><b>einer Landesliste (Partei)</b><br></h2>
+        <h3>-maßgebende Stimme für die Verteilung die Sitzverteilung im Landtag-</h3>
+        <h2><b>Landesstimme</b><br></h2>
+      </div>
+      <label for="landesstimme"></label>
+
+      <div class="auswahl">
+        <input type="checkbox" id="option2a" name="landesstimme" value="Option 2A" >
+        <label for="option2a">Option 2A</label><br>
+        <input type="checkbox" id="option2b" name="landesstimme" value="Option 2B">
+        <label for="option2b">Option 2B</label><br>
+        <input type="checkbox" id="option2c" name="landesstimme" value="Option 2C">
+        <label for="option2c">Option 2C</label><br>
+      </div>
+
+    </div>
+  </div>
+  <input type="submit" value="Absenden">
+</form>
+</body>

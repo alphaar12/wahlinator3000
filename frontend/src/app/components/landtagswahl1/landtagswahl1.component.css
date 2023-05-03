@@ -5,15 +5,14 @@
   border-style: solid;
 }
 
-.erststimme {
+.wahlkreisstimme {
   padding: 10px 10px 10px 10px;
   flex: 1;
 }
 
 
-.zweitstimme {
+.landesstimme {
   padding: 10px 10px 10px 10px;
-  color: #00BFFF;
   flex: 1;
 }
 
@@ -57,11 +56,11 @@ Input[type="submit"]:hover {
   }
 
   .erststimme {
-    background: #F2F2F2;
+    background-color: #F2F2F2;
   }
 
   .zweitstimme{
-    background: #E0ECF8;
+    background-color: #F2F2F2;
   }
 
 }
@@ -69,6 +68,3 @@ Input[type="submit"]:hover {
 #groß {
   font-size: 50px;
 }
-
-
-
