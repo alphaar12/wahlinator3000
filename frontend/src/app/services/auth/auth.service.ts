@@ -50,13 +50,14 @@ export class AuthService {
     );
   }
 
-  register(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number, password: String): Observable<any> {
+  register(personalNumber: String, firstName: String, lastName: String, birthdate: string, constituency: String, federalState: String, password: String): Observable<any> {
     const user = {
       personalNumber: personalNumber,
       firstName: firstName,
       lastName: lastName,
       birthdate: this.formatDate(birthdate),
-      zipCode: zipCode,
+      constituency: constituency,
+      federalState: federalState,
       password: password
     };
     return this.http.post(`${environment.apiUrl}/auth/signup/`, user, httpOptions);

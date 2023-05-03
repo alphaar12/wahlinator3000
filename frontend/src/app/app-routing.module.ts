@@ -7,6 +7,8 @@ import {AnmeldeseiteComponent} from "./components/anmeldeseite/anmeldeseite.comp
 import {NutzerBearbeitenComponent} from "./components/nutzer-bearbeiten/nutzer-bearbeiten.component";
 import {WahlAuswahlComponent} from "./components/wahl-auswahl/wahl-auswahl.component";
 import {BundestagswahlComponent} from "./components/bundestagswahl/bundestagswahl.component";
+import {FaqComponent} from "./components/faq/faq.component";
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -15,7 +17,8 @@ const routes: Routes = [
   {path: 'login', component: AnmeldeseiteComponent},
   {path: 'editUser', component: NutzerBearbeitenComponent},
   {path: 'wahlAuswahl', component: WahlAuswahlComponent},
-  {path: 'bundestagswahl', component: BundestagswahlComponent}
+  {path: 'bundestagswahl', component: BundestagswahlComponent},
+  {path: 'faq', component: FaqComponent}
 ];
 
 @NgModule({

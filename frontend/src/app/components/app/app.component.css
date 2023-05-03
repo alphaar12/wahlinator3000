@@ -18,6 +18,15 @@
   /*font-weight: 600;*/
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuButton {
+  margin: 0.3rem;
+}
+
 img {
   margin: 0 16px;
 }
@@ -150,12 +159,12 @@ svg.material-icons:not(:last-child) {
 a,
 a:visited,
 a:hover {
-  color: #1976d2;
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
-  color: #125699;
+  color: white;
 }
 
 .terminal {
@@ -247,6 +256,7 @@ footer a {
   width: 16px;
   margin-right: 4px;
 }
+
 
 
 /* Responsive Styles */

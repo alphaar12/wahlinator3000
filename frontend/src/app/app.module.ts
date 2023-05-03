@@ -25,6 +25,11 @@ import { WahlAuswahlComponent } from './components/wahl-auswahl/wahl-auswahl.com
 import { BundestagswahlComponent } from './components/bundestagswahl/bundestagswahl.component';
 
 import { httpInterceptorProviders } from './helpers/http.interceptor';
+import {MatSelectModule} from "@angular/material/select";
+import { FaqComponent } from './components/faq/faq.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -34,7 +39,8 @@ import { httpInterceptorProviders } from './helpers/http.interceptor';
     AnmeldeseiteComponent,
     NutzerBearbeitenComponent,
     WahlAuswahlComponent,
-    BundestagswahlComponent
+    BundestagswahlComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +59,10 @@ import { httpInterceptorProviders } from './helpers/http.interceptor';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSnackBarModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatIconModule,
+    MatExpansionModule,
   ],
   exports: [
     HttpClientModule,

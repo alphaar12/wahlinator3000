@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from "../../services/auth/auth.service";
+import {DropdownItems} from "../DropdownItems";
 
 @Component({
   selector: 'app-nutzer-anlegen',
   templateUrl: './nutzer-anlegen.component.html',
   styleUrls: ['./nutzer-anlegen.component.css']
 })
-export class NutzerAnlegenComponent {
+export class NutzerAnlegenComponent implements OnInit {
 
   createForm: FormGroup;
   showButton = false;
@@ -17,6 +18,8 @@ export class NutzerAnlegenComponent {
   isSignUpFailed = false;
   errorMessage = '';
   maxDate: Date;
+  federalStates: any;
+  constituencies: any;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.createForm = this.formBuilder.group({
@@ -24,13 +27,16 @@ export class NutzerAnlegenComponent {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       birthdate: ['', Validators.required],
-      zipCode: ['', Validators.required],
+      constituency: ['', Validators.required],
+      federalState: ['', Validators.required],
     });
     this.maxDate = new Date();
+    this.constituencies = [];
+    this.federalStates = DropdownItems.federalStates;
   }
 
-  register(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number, password: String) {
-    this.authService.register(personalNumber, firstName, lastName, birthdate, zipCode, password).subscribe({
+  register(personalNumber: String, firstName: String, lastName: String, birthdate: string, constituency: String, federalState: String, password: String) {
+    this.authService.register(personalNumber, firstName, lastName, birthdate, constituency, federalState, password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
@@ -57,6 +63,10 @@ export class NutzerAnlegenComponent {
       inputField.setAttribute("value", inputVal);
     }
     this.showButton = true;
+  }
+
+  checkAvailableConstituencies(federalState: string){
+     this.constituencies = DropdownItems.checkConstituencies(federalState);
   }
 
   ngOnInit(): void {

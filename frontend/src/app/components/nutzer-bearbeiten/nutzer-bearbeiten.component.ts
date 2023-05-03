@@ -3,6 +3,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {DropdownItems} from "../DropdownItems";
+
+interface federalState {
+  value: string;
+}
 
 @Component({
   selector: 'app-nutzer-bearbeiten',
@@ -17,6 +22,9 @@ export class NutzerBearbeitenComponent {
   errorMessage = '';
   public userDetails: any;
   maxDate: Date;
+  federalStates: any;
+  constituencies: any;
+
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.editForm = this.formBuilder.group({
@@ -24,9 +32,12 @@ export class NutzerBearbeitenComponent {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       birthdate: ['', Validators.required],
-      zipCode: ['', Validators.required],
+      federalState: ['', Validators.required],
+      constituency: ['', Validators.required],
     });
     this.maxDate = new Date();
+    this.constituencies = DropdownItems.constituencies;
+    this.federalStates = DropdownItems.federalStates;
   }
 
   getUser(personalNumber: string) {
@@ -38,7 +49,8 @@ export class NutzerBearbeitenComponent {
         this.editForm.get("firstName")?.setValue(this.userDetails.firstName);
         this.editForm.get("lastName")?.setValue(this.userDetails.lastName);
         this.editForm.get("birthdate")?.setValue(this.userDetails.birthdate);
-        this.editForm.get("zipCode")?.setValue(this.userDetails.zipCode);
+        this.editForm.get("federalState")?.setValue(this.userDetails.federalState);
+        this.editForm.get("constituency")?.setValue(this.userDetails.constituency);
         this.showButton = true;
       },
       error: err => {
@@ -51,8 +63,8 @@ export class NutzerBearbeitenComponent {
     });
   }
 
-  editUser(personalNumber: String, firstName: String, lastName: String, birthdate: any, zipCode: number) {
-    this.userService.editUser(personalNumber, firstName, lastName, birthdate, zipCode).subscribe({
+  editUser(personalNumber: String, firstName: String, lastName: String, birthdate: any, federalState: String, constituency: String) {
+    this.userService.editUser(personalNumber, firstName, lastName, birthdate, federalState, constituency).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;

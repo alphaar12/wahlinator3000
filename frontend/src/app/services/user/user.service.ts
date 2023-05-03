@@ -20,13 +20,14 @@ export class UserService {
     return this.http.get(`${environment.apiUrl}/admin/getUser/${personalNumber}`);
   }
 
-  editUser(personalNumber: String, firstName: String, lastName: String, birthdate: string, zipCode: number) {
+  editUser(personalNumber: String, firstName: String, lastName: String, birthdate: string, federalState: String, constituency: String) {
     const user = {
       personalNumber: personalNumber,
       firstName: firstName,
       lastName: lastName,
       birthdate: this.authService.formatDate(birthdate),
-      zipCode: zipCode
+      federalState: federalState,
+      constituency: constituency
     };
     return this.http.put(`${environment.apiUrl}/admin/editUser/${personalNumber}`, user);
   }

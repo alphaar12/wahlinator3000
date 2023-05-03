@@ -40,7 +40,13 @@ export class AnmeldeseiteComponent {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
-        this.reloadPage();
+        console.log(data);
+        if(data.roles[0] == 'ROLE_USER'){
+          this.router.navigate([`/wahlAuswahl`]);
+        }else{
+          this.router.navigate([`/admin`]);
+        }
+        //this.reloadPage();
       },
       error: err => {
         this.errorMessage = err.error.message;

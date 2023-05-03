@@ -25,8 +25,21 @@
     </mat-form-field>
 
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
-      <input matInput type="number" pattern="\d{5}" min="10000" max="99999" formControlName="zipCode" #zipCode>
-      <mat-label>Postleitzahl</mat-label>
+      <mat-select formControlName="federalState" (selectionChange)="checkAvailableConstituencies(federalState.value)" #federalState>
+        <mat-option *ngFor="let federalState of federalStates" [value]="federalState">
+          {{federalState}}
+        </mat-option>
+      </mat-select>
+      <mat-label>Bundesland</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
+      <mat-select formControlName="constituency" #constituency>
+        <mat-option *ngFor="let constituency of constituencies" [value]="constituency.name">
+          {{constituency.name}}
+        </mat-option>
+      </mat-select>
+      <mat-label>Wahlkreis</mat-label>
     </mat-form-field>
 
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
@@ -42,7 +55,7 @@
         Passwort generieren
       </button>
       <button type="submit" *ngIf="showButton"
-              (click)="register(personalNumber.value, firstName.value, lastName.value, birthdate.value, zipCode.valueAsNumber, password.value)"
+              (click)="register(personalNumber.value, firstName.value, lastName.value, birthdate.value, constituency.value, federalState.value, password.value)"
               [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="accent" class="button">
         Anlegen
       </button>
