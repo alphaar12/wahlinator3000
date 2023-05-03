@@ -30,6 +30,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -42,28 +43,29 @@ import {MatExpansionModule} from "@angular/material/expansion";
     BundestagswahlComponent,
     FaqComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterOutlet,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    RouterModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatMenuModule,
-    MatIconModule,
-    MatExpansionModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterOutlet,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        RouterModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSnackBarModule,
+        MatSelectModule,
+        MatMenuModule,
+        MatIconModule,
+        MatExpansionModule,
+        MatTabsModule,
+    ],
   exports: [
     HttpClientModule,
     ReactiveFormsModule,

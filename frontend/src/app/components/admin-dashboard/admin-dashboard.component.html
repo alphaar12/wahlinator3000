@@ -1,22 +1,9 @@
-<div class="content" role="main">
+<mat-tab-group>
+  <mat-tab label="Neuen Nutzer anlegen">
+    <app-nutzer-anlegen></app-nutzer-anlegen>
+  </mat-tab>
 
-  <h2>Sie sind als Admin angemeldet. Was möchten Sie machen?</h2>
-
-
-  <div class="card-container">
-    <a class="card" routerLink="/newUser">
-      <span>Benutzer erstellen</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-      </svg>
-    </a>
-
-    <a class="card" routerLink="/editUser">
-      <span>Benutzer bearbeiten</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-      </svg>
-    </a>
-  </div>
-
-</div>
+  <mat-tab label="Bestehenden Nutzer bearbeiten">
+    <app-nutzer-bearbeiten></app-nutzer-bearbeiten>
+  </mat-tab>
+</mat-tab-group>
