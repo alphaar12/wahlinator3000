@@ -4,8 +4,21 @@
 <div style="text-align: center;">
   <h1><b>STIMMZETTEL</b><br></h1>
   <h3>Für die Wahl zum Deutschen Bundestag <br>
-    im Wahlkreis <div id="wahlkreis">
-      am <span id="date"></span><br><br></div></h3>
+    im Wahlkreis
+
+    <a routerLink="/">
+      <span>{{electionData1?.type}}</span>
+      <span>{{electionData1?.region | slice:0:16}}</span>
+    </a>
+
+    am
+
+    <a routerLink="/">
+    <span>{{electionData2?.type}}</span>
+    <span>{{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
+    </a><br><br>
+  </h3>
+
   <h2 id="groß"><b>Sie haben 2 Stimmen</b><br><br></h2>
 </div>
 
