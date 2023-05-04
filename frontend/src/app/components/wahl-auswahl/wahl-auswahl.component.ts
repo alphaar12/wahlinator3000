@@ -49,4 +49,9 @@ export class WahlAuswahlComponent implements OnInit {
     console.error(error);
     return throwError(error);
   }
+
+  checkIfElectionHasStarted(electionStartDate: Date): boolean {
+    let now = new Date();
+    return now > electionStartDate;
+  }
 }

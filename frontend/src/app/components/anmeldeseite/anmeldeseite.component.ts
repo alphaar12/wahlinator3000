@@ -14,7 +14,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AnmeldeseiteComponent {
   createForm: FormGroup;
   isLoggedIn = false;
-  isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
@@ -36,8 +35,6 @@ export class AnmeldeseiteComponent {
     this.authService.login(personalNumber, password).subscribe({
       next: data => {
         this.storageService.saveUser(data);
-
-        this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
         console.log(data);
@@ -53,7 +50,6 @@ export class AnmeldeseiteComponent {
       },
       error: err => {
         this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
         this.snackBar.open('Anmeldung fehlgeschlagen! ' + this.errorMessage, 'OK', {
           duration: 3000
         });
