@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -34,6 +34,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { LandtagswahlbwComponent } from './components/landtagswahlbw/landtagswahlbw.component';
 import { LandtagswahlslComponent } from './components/landtagswahlsl/landtagswahlsl.component';
 import { Landtagswahl1Component } from './components/landtagswahl1/landtagswahl1.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { Landtagswahl1Component } from './components/landtagswahl1/landtagswahl1
         MatIconModule,
         MatExpansionModule,
         MatTabsModule,
+        MatStepperModule,
     ],
   exports: [
     HttpClientModule,
@@ -89,6 +91,7 @@ import { Landtagswahl1Component } from './components/landtagswahl1/landtagswahl1
     MatNativeDateModule,
     {provide: MAT_DATE_LOCALE, useValue: 'de-DE'},
     httpInterceptorProviders,
+    {provide: LOCALE_ID, useValue: 'de-DE'},
 
   ],
   bootstrap: [AppComponent]

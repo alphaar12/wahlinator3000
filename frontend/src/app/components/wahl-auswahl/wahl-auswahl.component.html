@@ -2,10 +2,12 @@
 
 <div class="card-container">
   <a class="card" routerLink="/">
-    <span>Wahl 1</span>
+    <span>{{electionData1?.type}}</span>
+    <span>Enddatum: {{electionData1?.endDate | date: 'longDate': 'de-DE'}}</span>
   </a>
 
   <a class="card" routerLink="/">
-    <span>Wahl 2</span>
+    <span>{{electionData2?.type}}</span>
+    <span>Enddatum: {{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
   </a>
 </div>
