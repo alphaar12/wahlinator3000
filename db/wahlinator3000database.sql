@@ -91,7 +91,7 @@ CREATE TABLE Has_Voted_Election (
             REFERENCES election (ID)
 );
 
-CREATE TABLE Election_political_member_Votes(
+CREATE TABLE election_political_member_Votes(
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
             REFERENCES election (ID),
@@ -101,7 +101,7 @@ CREATE TABLE Election_political_member_Votes(
 		votes INT
 );
 
-CREATE TABLE Election_political_party_Votes(
+CREATE TABLE election_political_party_Votes(
 		Election_ID INT,
         FOREIGN KEY (Election_ID)
             REFERENCES election (ID),
@@ -257,6 +257,77 @@ INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 25);
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 26);
 INSERT INTO election_political_member(Election_ID, political_member_ID) VALUES(2, 27);
+
+-- election_political_member_Votes
+-- Bundestag
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 1, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 2, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 3, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 4, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 5, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 6, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 7, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 8, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 9, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 10, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 11, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 12, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(1, 13, 0);
+-- Landtag BW
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 14, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 15, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 16, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 17, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 18, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 19, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 20, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 21, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 22, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 23, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 24, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 25, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 26, 0);
+INSERT INTO election_political_member_Votes(Election_ID, political_member_ID, votes) VALUES(2, 27, 0);
+
+-- election_political_party_Votes
+-- Bundestag
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 1, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 2, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 3, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 4, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 5, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 6, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 7, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 8, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 9, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 10, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 11, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 12, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 13, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 14, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 15, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 16, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 17, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 18, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 19, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 20, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 21, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(1, 22, 0);
+-- Landtag Saarland
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 1, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 2, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 4, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 6, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 5, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 3, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 25, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 13, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 10, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 26, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 19, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 7, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 11, 0);
+INSERT INTO election_political_party_Votes(Election_ID, political_party_ID, votes) VALUES(3, 22, 0);
 
 
 INSERT INTO users(id, personal_number, first_name, last_name, birthdate, constituency, federal_state, password)
