@@ -1,31 +1,56 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { ElectionService } from '../../services/election/election.service';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bundestagswahl',
   templateUrl: './bundestagswahl.component.html',
   styleUrls: ['./bundestagswahl.component.css']
 })
-export class BundestagswahlComponent {
+export class BundestagswahlComponent implements OnInit {
+  public electionData1: any;
+  public electionData2: any;
+  public errorMessage: any;
 
-}
-
-function validateForm(): boolean {
-  const erststimme = document.getElementsByName("erststimme") as NodeListOf<HTMLInputElement>;
-  const zweitstimme = document.getElementsByName("zweitstimme") as NodeListOf<HTMLInputElement>;
-  if (!isChecked(erststimme) || !isChecked(zweitstimme)) {
-    alert("Bitte wählen Sie maximal eine Option aus dem jeweiligen Formular.");
-    return false;
+  constructor(private electionService: ElectionService) {
   }
-  return true;
+
+  ngOnInit(): void {
+    this.getElection(1).subscribe(
+      (data) => {
+        console.log(data);
+        this.electionData1 = data;
+      },
+      (error) => {
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage);
+      }
+    );
+
+    this.getElection(2).subscribe(
+      (data) => {
+        console.log(data);
+        this.electionData2 = data;
+      },
+      (error) => {
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage);
+      }
+    );
+  }
+
+  getElection(electionId: number): Observable<any> {
+    return this.electionService
+      .getElection(electionId)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: any) {
+    console.error(error);
+    return throwError(error);
+  }
 }
 
-function isChecked(option: NodeListOf<HTMLInputElement>): boolean {
-  for (let i = 0; i < option.length; i++) {
-    if (option[i].checked) {
-      return true;
-    }
-  }
-  return false;
-}
 
 
