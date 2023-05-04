@@ -18,9 +18,9 @@ const routes: Routes = [
   {path: 'wahlAuswahl', component: WahlAuswahlComponent},
   {path: 'bundestagswahl', component: BundestagswahlComponent},
   {path: 'faq', component: FaqComponent},
-  {path: 'landtagswahlbw', component: LandtagswahlbwComponent},
-  {path: 'landtagswahlsl', component: LandtagswahlslComponent},
-  {path: 'landtagswahl1', component: Landtagswahl1Component}
+  {path: 'landtagswahl1', component: LandtagswahlbwComponent},
+  {path: 'landtagswahl2', component: LandtagswahlslComponent},
+  {path: 'landtagswahl3', component: Landtagswahl1Component}
 ];
 
 @NgModule({
