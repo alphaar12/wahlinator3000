@@ -22,16 +22,20 @@ public class Election implements Serializable {
     @Column(name = "votes")
     private int votes;
 
+    @Column(name = "age")
+    private int age;
+
     @Column(name = "start_date")
     private Date startDate;
 
     @Column(name = "end_date")
     private Date endDate;
 
-    public Election(String type, String region, int votes, Date startDate, Date endDate) {
+    public Election(String type, String region, int votes, int age, Date startDate, Date endDate) {
         this.type = type;
         this.region = region;
         this.votes = votes;
+        this.age = age;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -70,6 +74,14 @@ public class Election implements Serializable {
 
     public void setVotes(int votes) {
         this.votes = votes;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Date getStartDate() {

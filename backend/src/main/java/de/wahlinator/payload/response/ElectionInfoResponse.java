@@ -8,16 +8,18 @@ public class ElectionInfoResponse {
     private String type;
     private String region;
     private int votes;
+    private int age;
     private Date startDate;
     private Date endDate;
     private List<?> parties;
     private List<?> partyMembers;
 
-    public ElectionInfoResponse(int id, String type, String region, int votes, Date startDate, Date endDate, List<?> parties, List<?> partyMembers) {
+    public ElectionInfoResponse(int id, String type, String region, int votes, int age, Date startDate, Date endDate, List<?> parties, List<?> partyMembers) {
         this.id = id;
         this.type = type;
         this.region = region;
         this.votes = votes;
+        this.age = age;
         this.startDate = startDate;
         this.endDate = endDate;
         this.parties = parties;
@@ -55,6 +57,14 @@ public class ElectionInfoResponse {
 
     public void setVotes(int votes) {
         this.votes = votes;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Date getStartDate() {
