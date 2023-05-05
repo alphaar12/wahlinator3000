@@ -44,7 +44,8 @@ CREATE TABLE election (
         region VARCHAR(50),
         votes INT,
 		start_date DATE,
-        end_date DATE
+        end_date DATE,
+        minimum_age INT
 );
 
 CREATE TABLE political_party (
@@ -181,11 +182,11 @@ INSERT INTO political_member(first_name, Last_Name, Description, political_Party
 
 -- Elections
 -- Bundestagswahl
-INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01');
+INSERT INTO election(type, region, votes, start_date, end_date, minimum_age) VALUES('Bundestagswahl', 'Deutschland', 2, '2023.04.01', '2023.10.01', 18);
 -- Landtag BW
-INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Landtag BW', 'Stuttgart', 1, '2023.04.01', '2023.10.01');
+INSERT INTO election(type, region, votes, start_date, end_date, minimum_age) VALUES('Landtag BW', 'Stuttgart', 1, '2023.04.01', '2023.10.01', 16);
 -- Landtag Saarland
-INSERT INTO election(type, region, votes, start_date, end_date) VALUES('Landtag Saarland', 'Saabrücken', 1, '2023.04.01', '2023.10.01');
+INSERT INTO election(type, region, votes, start_date, end_date, minimum_age) VALUES('Landtag Saarland', 'Saabrücken', 1, '2023.04.01', '2023.10.01', 18);
 
 -- election Political Party
 -- Bundestag
