@@ -2,11 +2,9 @@ package de.wahlinator.controller;
 
 import de.wahlinator.entity.User;
 import de.wahlinator.payload.response.MessageResponse;
-import de.wahlinator.payload.response.UserInfoResponse;
 import de.wahlinator.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +18,6 @@ public class UserController {
 
     @Transactional
     @PutMapping("/editUser/{personalNumber}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> editUser(
             @RequestBody User user,
             @PathVariable String personalNumber
@@ -40,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/getUser/{personalNumber}")
-    public ResponseEntity<?> getSingleCar(
+    public ResponseEntity<?> getSingleUser(
             @PathVariable String personalNumber
     ) {
         if (userRepository.existsByPersonalNumber(personalNumber)) {
