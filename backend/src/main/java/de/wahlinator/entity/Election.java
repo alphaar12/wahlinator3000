@@ -22,7 +22,7 @@ public class Election implements Serializable {
     @Column(name = "votes")
     private int votes;
 
-    @Column(name = "age")
+    @Column(name = "minimum_age")
     private int age;
 
     @Column(name = "start_date")
