@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth/auth.service";
 import {StorageService} from "../../services/storage/storage.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
+//import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-anmeldeseite',
@@ -17,7 +18,7 @@ export class AnmeldeseiteComponent {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService, private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private afAuth: AngularFireAuth, private authService: AuthService, private storageService: StorageService, private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.createForm = this.formBuilder.group({
       personalNumber: ['', Validators.required],
       password: ['', Validators.required],
