@@ -18,7 +18,7 @@ export class AnmeldeseiteComponent {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private afAuth: AngularFireAuth, private authService: AuthService, private storageService: StorageService, private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private authService: AuthService, private storageService: StorageService, private userService: UserService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.createForm = this.formBuilder.group({
       personalNumber: ['', Validators.required],
       password: ['', Validators.required],
