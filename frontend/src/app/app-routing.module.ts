@@ -41,7 +41,7 @@ import { AnmeldeseiteComponent } from './components/anmeldeseite/anmeldeseite.co
 import { FaqComponent } from './components/faq/faq.component';
 import { WahlAuswahlComponent } from './components/wahl-auswahl/wahl-auswahl.component';
 import { BundestagswahlComponent } from './components/bundestagswahl/bundestagswahl.component';
-import { UserAuthGuard } from './guards/user-auth.guard';
+import { UserAuthGuard } from './user-auth.guard';
 
 import { LandtagswahlbwComponent } from './components/landtagswahlbw/landtagswahlbw.component';
 import { LandtagswahlslComponent } from './components/landtagswahlsl/landtagswahlsl.component';
