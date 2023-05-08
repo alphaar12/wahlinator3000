@@ -9,12 +9,15 @@ import {catchError} from "rxjs/operators";
   styleUrls: ['./landtagswahlsl.component.css']
 })
 export class LandtagswahlslComponent implements OnInit {
-  public electionData1: any;
-  public electionData2: any;
+  public electionData1: any; //date
+  public electionData2: any; //wahlkreis
+  public electionData3: any; //Erststimme
+  public electionData4: any; //Zweitstimme
   public errorMessage: any;
 
   constructor(private electionService: ElectionService) {
   }
+
 
   ngOnInit(): void {
     this.getElection(1).subscribe(
@@ -38,6 +41,26 @@ export class LandtagswahlslComponent implements OnInit {
         console.log(this.errorMessage);
       }
     );
+
+    this.getMembers().subscribe(
+      (data) => {
+        console.log(data);
+        this.electionData3 = data;
+      }, (error) => {
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage);
+      }
+    )
+
+    this.getParties().subscribe(
+      (data) => {
+        console.log(data);
+        this.electionData4 = data;
+      }, (error) => {
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage);
+      }
+    )
   }
 
   getElection(electionId: number): Observable<any> {
@@ -45,6 +68,24 @@ export class LandtagswahlslComponent implements OnInit {
       .getElection(electionId)
       .pipe(catchError(this.handleError));
   }
+
+  getMembers(): Observable<any> {
+    return this.electionService
+      .getMembers()
+      .pipe(catchError(this.handleError));
+  }
+
+  getParties(): Observable<any> {
+    return this.electionService
+      .getParties()
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: any) {
+    console.error(error);
+    return throwError(error);
+  }
+}
 
   private handleError(error: any) {
     console.error(error);
