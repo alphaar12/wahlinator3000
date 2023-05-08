@@ -17,27 +17,6 @@ export class BundestagswahlComponent implements OnInit {
 
   constructor(private electionService: ElectionService) {
   }
-  
-  
-  function validateForm(): boolean {
-  const erststimme = document.getElementsByName("erststimme") as NodeListOf<HTMLInputElement>;
-  const zweitstimme = document.getElementsByName("zweitstimme") as NodeListOf<HTMLInputElement>;
-  if (!isChecked(erststimme) || !isChecked(zweitstimme)) {
-    alert("Bitte wählen Sie maximal eine Option aus dem jeweiligen Formular.");
-    return false;
-  }
-  return true;
-}
-
-function isChecked(option: NodeListOf<HTMLInputElement>): boolean {
-  for (let i = 0; i < option.length; i++) {
-    if (option[i].checked) {
-      return true;
-    }
-  }
-  return false;
-}
-
 
   ngOnInit(): void {
     this.getElection(1).subscribe(
@@ -105,6 +84,14 @@ function isChecked(option: NodeListOf<HTMLInputElement>): boolean {
     console.error(error);
     return throwError(error);
   }
+
+  onCheckboxChange() {
+    if (this.electionData1 && this.electionData2) {
+      this.electionData1 = false;
+      this.electionData2 = false;
+    }
+  }
+
 }
 
 
