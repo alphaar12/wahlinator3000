@@ -23,6 +23,6 @@ export class ElectionService {
   }
 
   getHasVoted(userId:number, electionId:number){
-    return this.http.post(`${environment.apiUrl}/elections/members`,{userId, electionId});
+    return this.http.post(`${environment.apiUrl}/elections/hasVoted`,{userId, electionId});
   }
 }
