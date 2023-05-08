@@ -21,14 +21,12 @@
   </h3>
   <h1><b>Jeder Wähler / Jede Wählerin hat eine Stimme.</b><br><br></h1>
 </div>
-      <div class="auswahl">
-        <input type="checkbox" id="option1a" name="votedBW" value="Option 1A">
-        <label for="option1a">Option 1A</label><br>
-        <input type="checkbox" id="option1b" name="votedBW" value="Option 1B">
-        <label for="option1b">Option 1B</label><br>
-        <input type="checkbox" id="option1c" name="votedBW" value="Option 1C">
-        <label for="option1c">Option 1C</label><br>
+      <div *ngFor="let data of electionData3" class="auswahl">
+        <mat-checkbox>
+          <span>{{data.abbreviation}}</span>
+        </mat-checkbox>
       </div>
+    </div>
   <input type="submit" value="Absenden">
 </body>
 
