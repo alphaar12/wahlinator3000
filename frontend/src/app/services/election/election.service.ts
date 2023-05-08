@@ -21,4 +21,8 @@ export class ElectionService {
   getMembers() {
     return this.http.get(`${environment.apiUrl}/elections/members`);
   }
+
+  getHasVoted(userId:number, electionId:number){
+    return this.http.post(`${environment.apiUrl}/elections/members`,{userId, electionId});
+  }
 }
