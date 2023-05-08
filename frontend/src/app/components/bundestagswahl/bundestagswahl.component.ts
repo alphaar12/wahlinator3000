@@ -9,8 +9,10 @@ import { catchError } from 'rxjs/operators';
   styleUrls: ['./bundestagswahl.component.css']
 })
 export class BundestagswahlComponent implements OnInit {
-  public electionData1: any;
-  public electionData2: any;
+  public electionData1: any; //date
+  public electionData2: any; //wahlkreis
+  public electionData3: any; //Erststimme
+  public electionData4: any; //Zweitstimme
   public errorMessage: any;
 
   constructor(private electionService: ElectionService) {
@@ -38,11 +40,43 @@ export class BundestagswahlComponent implements OnInit {
         console.log(this.errorMessage);
       }
     );
+
+    this.getMembers().subscribe(
+      (data) => {
+        console.log(data);
+        this.electionData3 = data;
+      }, (error) => {
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage);
+      }
+    )
+
+    this.getParties().subscribe(
+      (data) => {
+        console.log(data);
+        this.electionData4 = data;
+      }, (error) => {
+        this.errorMessage = error.error.message;
+        console.log(this.errorMessage);
+      }
+    )
   }
 
   getElection(electionId: number): Observable<any> {
     return this.electionService
       .getElection(electionId)
+      .pipe(catchError(this.handleError));
+  }
+
+  getMembers(): Observable<any> {
+    return this.electionService
+      .getMembers()
+      .pipe(catchError(this.handleError));
+  }
+
+  getParties(): Observable<any> {
+    return this.electionService
+      .getParties()
       .pipe(catchError(this.handleError));
   }
 
