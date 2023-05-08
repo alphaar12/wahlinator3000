@@ -38,12 +38,11 @@
       <label for="erststimme"></label>
 
       <div class="auswahl">
-        <input type="checkbox" id="option1a" name="erststimme" value="Option 1A">
-        <label for="option1a">Option 1A</label><br>
-        <input type="checkbox" id="option1b" name="erststimme" value="Option 1B">
-        <label for="option1b">Option 1B</label><br>
-        <input type="checkbox" id="option1c" name="erststimme" value="Option 1C">
-        <label for="option1c">Option 1C</label><br>
+          <mat-checkbox>
+            <a routerLink="/">
+              <span>{{electionData3?.lastName}} {{electionData3?.firstName}}</span>
+            </a>
+          </mat-checkbox>
       </div>
 
     </div><br><br><br><br>
@@ -63,14 +62,13 @@
       <label for="zweitstimme"></label>
 
       <div class="auswahl">
-        <input type="checkbox" id="option2a" name="zweitstimme" value="Option 2A" >
-        <label for="option2a">Option 2A</label><br>
-        <input type="checkbox" id="option2b" name="zweitstimme" value="Option 2B">
-        <label for="option2b">Option 2B</label><br>
-        <input type="checkbox" id="option2c" name="zweitstimme" value="Option 2C">
-        <label for="option2c">Option 2C</label><br>
+        <mat-checkbox>
+            <a routerLink="/">
+              <span>{{electionData3?.abbrevation}}</span>
+            </a>
+          </mat-checkbox>
       </div>
-
+      
     </div>
   </div>
   <input type="submit" value="Absenden">
