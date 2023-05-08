@@ -1,4 +1,4 @@
-.auswahl{
+.auswahl {
   border-width: 2px;
   margin: auto;
   padding: 5px 5px 5px 5px;
@@ -33,11 +33,11 @@ Input[type="submit"] {
   align-content: center;
   width: 30%;
   height: 70px;
-  padding:5px 15px;
+  padding: 5px 15px;
   margin: 20px 20px 20px 20px;
   background: #F7D358;
-  border:0 none;
-  cursor:pointer;
+  border: 0 none;
+  cursor: pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
@@ -50,7 +50,6 @@ Input[type="submit"]:hover {
 }
 
 
-
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
@@ -60,7 +59,7 @@ Input[type="submit"]:hover {
     background: #F2F2F2;
   }
 
-  .zweitstimme{
+  .zweitstimme {
     background: #E0ECF8;
   }
 

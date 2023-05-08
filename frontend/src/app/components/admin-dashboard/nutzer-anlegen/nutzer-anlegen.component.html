@@ -1,7 +1,8 @@
 <div class="content">
   <br>
   <mat-divider></mat-divider>
-  <form [formGroup]="createForm" class="create-form" (ngSubmit)="myNgForm.resetForm(); password.value=''; showButton = false;" #myNgForm="ngForm">
+  <form [formGroup]="createForm" class="create-form"
+        (ngSubmit)="myNgForm.resetForm(); password.value=''; showButton = false;" #myNgForm="ngForm">
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
       <input matInput type="text" maxlength="9" minlength="9" formControlName="personalNumber" #personalNumber>
       <mat-label>Ausweisnummer</mat-label>
@@ -25,7 +26,8 @@
     </mat-form-field>
 
     <mat-form-field class="field-full-width" [hideRequiredMarker]="true">
-      <mat-select formControlName="federalState" (selectionChange)="checkAvailableConstituencies(federalState.value)" #federalState>
+      <mat-select formControlName="federalState" (selectionChange)="checkAvailableConstituencies(federalState.value)"
+                  #federalState>
         <mat-option *ngFor="let federalState of federalStates" [value]="federalState">
           {{federalState}}
         </mat-option>

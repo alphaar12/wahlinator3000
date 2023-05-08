@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth/auth.service";
 import {StorageService} from "../../services/storage/storage.service";
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 //import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
