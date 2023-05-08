@@ -36,12 +36,10 @@
       </div>
       <label for="erststimme"></label>
 
-      <div class="auswahl">
-          <mat-checkbox>
-            <a routerLink="/">
-              <span>{{electionData3?.lastName}} {{electionData3?.firstName}}</span>
-            </a>
-          </mat-checkbox>
+      <div *ngFor="let data of electionData3" class="auswahl">
+        <mat-checkbox>
+          <span>{{data.lastName}} {{data.firstName}}</span>
+        </mat-checkbox>
       </div>
 
     </div>
@@ -61,12 +59,10 @@
       </div>
       <label for="zweitstimme"></label>
 
-      <div class="auswahl">
+     <div *ngFor="let data of electionData4" class="auswahl">
         <mat-checkbox>
-            <a routerLink="/">
-              <span>{{electionData3?.abbrevation}}</span>
-            </a>
-          </mat-checkbox>
+          <span>{{data.abbretation}}</span>
+        </mat-checkbox>
       </div>
       
     </div>
