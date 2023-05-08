@@ -66,7 +66,7 @@ public class ElectionController {
 
     }
 
-    @GetMapping("/hasVoted")
+    @PostMapping("/hasVoted")
     public ResponseEntity<?> hasVoted(
             @RequestBody VoteRequest vote
     ) {

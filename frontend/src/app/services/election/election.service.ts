@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
@@ -20,5 +20,9 @@ export class ElectionService {
 
   getMembers() {
     return this.http.get(`${environment.apiUrl}/elections/members`);
+  }
+
+  getHasVoted(userId: number, electionId: number) {
+    return this.http.post(`${environment.apiUrl}/elections/hasVoted`, {userId, electionId});
   }
 }

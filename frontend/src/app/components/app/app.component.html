@@ -7,7 +7,8 @@
   <a class="title" routerLink="/">Wahlinator</a>
   <div class="spacer"></div>
   <div>
-    <button mat-icon-button [matMenuTriggerFor]="navMenu" #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()">
+    <button mat-icon-button [matMenuTriggerFor]="navMenu" #menuTrigger="matMenuTrigger"
+            (click)="menuTrigger.openMenu()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
@@ -20,19 +21,19 @@
           <p>FAQ</p>
         </button>
         <a mat-menu-item class="menuButton" color="primary"
-                href="https://archiv.wahl-o-mat.de/bundestagswahl2021/app/main_app.html">
+           href="https://archiv.wahl-o-mat.de/bundestagswahl2021/app/main_app.html">
           <mat-icon>how_to_vote</mat-icon>
           <p>Wahl-O-Mat</p>
         </a>
         <button mat-menu-item class="menuButton" *ngIf="isLoggedIn" color="primary"
-              routerLink="/" (click)="logout()">
+                routerLink="/" (click)="logout()">
           <mat-icon>logout</mat-icon>
           <p>Abmelden</p>
         </button>
     </mat-menu>
   </span>
 
- </mat-toolbar>
+</mat-toolbar>
 
 <div class="content" role="main">
   <!-- Router -->

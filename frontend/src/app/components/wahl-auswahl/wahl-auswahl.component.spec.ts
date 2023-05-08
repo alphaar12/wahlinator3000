@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WahlAuswahlComponent } from './wahl-auswahl.component';
+import {WahlAuswahlComponent} from './wahl-auswahl.component';
 
 describe('WahlAuswahlComponent', () => {
   let component: WahlAuswahlComponent;
@@ -8,9 +8,9 @@ describe('WahlAuswahlComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WahlAuswahlComponent ]
+      declarations: [WahlAuswahlComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(WahlAuswahlComponent);
     component = fixture.componentInstance;

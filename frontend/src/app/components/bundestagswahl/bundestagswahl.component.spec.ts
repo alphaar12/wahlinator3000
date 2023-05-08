@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BundestagswahlComponent } from './bundestagswahl.component';
+import {BundestagswahlComponent} from './bundestagswahl.component';
 
 describe('BundestagswahlComponent', () => {
   let component: BundestagswahlComponent;
@@ -8,9 +8,9 @@ describe('BundestagswahlComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BundestagswahlComponent ]
+      declarations: [BundestagswahlComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(BundestagswahlComponent);
     component = fixture.componentInstance;

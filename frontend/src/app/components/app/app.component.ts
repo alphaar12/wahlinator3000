@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {StorageService} from "../../services/storage/storage.service";
@@ -38,6 +38,7 @@ export class AppComponent {
       }
     })
   }
+
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
   }

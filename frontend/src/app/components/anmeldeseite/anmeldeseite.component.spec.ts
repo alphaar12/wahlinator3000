@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AnmeldeseiteComponent } from './anmeldeseite.component';
+import {AnmeldeseiteComponent} from './anmeldeseite.component';
 
 describe('AnmeldeseiteComponent', () => {
   let component: AnmeldeseiteComponent;
@@ -8,9 +8,9 @@ describe('AnmeldeseiteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnmeldeseiteComponent ]
+      declarations: [AnmeldeseiteComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AnmeldeseiteComponent);
     component = fixture.componentInstance;

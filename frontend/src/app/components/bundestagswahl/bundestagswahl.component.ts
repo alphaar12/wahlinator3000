@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { ElectionService } from '../../services/election/election.service';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {ElectionService} from '../../services/election/election.service';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-bundestagswahl',
