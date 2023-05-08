@@ -15,9 +15,9 @@ export class LandtagswahlslComponent implements OnInit {
   public electionData4: any; //Zweitstimme
   public errorMessage: any;
 
+
   constructor(private electionService: ElectionService) {
   }
-
 
   ngOnInit(): void {
     this.getElection(1).subscribe(
@@ -86,10 +86,3 @@ export class LandtagswahlslComponent implements OnInit {
     return throwError(error);
   }
 }
-
-  private handleError(error: any) {
-    console.error(error);
-    return throwError(error);
-  }
-}
-

@@ -18,7 +18,6 @@ export class LandtagswahlbwComponent implements OnInit {
   constructor(private electionService: ElectionService) {
   }
 
-
   ngOnInit(): void {
     this.getElection(1).subscribe(
       (data) => {

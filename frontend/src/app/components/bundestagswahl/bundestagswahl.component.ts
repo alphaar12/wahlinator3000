@@ -84,14 +84,6 @@ export class BundestagswahlComponent implements OnInit {
     console.error(error);
     return throwError(error);
   }
-
-  onCheckboxChange() {
-    if (this.electionData1 && this.electionData2) {
-      this.electionData1 = false;
-      this.electionData2 = false;
-    }
-  }
-
 }
 
 
