@@ -87,4 +87,40 @@ export class LandtagswahlbwComponent implements OnInit {
     console.error(error);
     return throwError(error);
   }
+
+  pushParty(userId: number, electionId: number, politicalPartyId: number) {
+    this.electionService.pushParty(userId, electionId, politicalPartyId).subscribe({
+      next: data => {
+        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+          duration: 3000
+        });
+        this.router.navigate([`/wahlAuswahl`]).then(() => {
+          window.location.reload();
+        });
+      },
+      error: err => {
+        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+          duration: 3000
+        });
+      }
+    });
+  }
+
+  pushMember(userId: number, electionId: number, politicalMemberIdList: Array<number>) {
+    this.electionService.pushMember(userId, electionId, politicalMemberIdList).subscribe({
+      next: data => {
+        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+          duration: 3000
+        });
+        this.router.navigate([`/wahlAuswahl`]).then(() => {
+          window.location.reload();
+        });
+      },
+      error: err => {
+        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+          duration: 3000
+        });
+      }
+    });
+  }
 }

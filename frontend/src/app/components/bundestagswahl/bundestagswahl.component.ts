@@ -14,8 +14,9 @@ import {UserService} from "../../services/user/user.service";
 })
 export class BundestagswahlComponent implements OnInit {
   public electionData1: any; //date
-  public electionData3: any; //Erststimme
-  public electionData4: any; //Zweitstimme
+  public electionData2: any;
+  public Erststimme: any;
+  public Zweitstimme: any;
   public errorMessage: any;
   public userDetails: any;
 
@@ -46,7 +47,7 @@ export class BundestagswahlComponent implements OnInit {
     this.getMembers().subscribe(
       (data) => {
         console.log(data);
-        this.electionData3 = data;
+        this.Erststimme = data;
       }, (error) => {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);
@@ -56,7 +57,7 @@ export class BundestagswahlComponent implements OnInit {
     this.getParties().subscribe(
       (data) => {
         console.log(data);
-        this.electionData4 = data;
+        this.Zweitstimme = data;
       }, (error) => {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);

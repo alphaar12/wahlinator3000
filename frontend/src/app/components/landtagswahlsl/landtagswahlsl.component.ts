@@ -12,7 +12,7 @@ export class LandtagswahlslComponent implements OnInit {
   public electionData1: any; //date
   public electionData2: any; //wahlkreis
   public electionData3: any; //Erststimme
-  public electionData4: any; //Zweitstimme
+  public Zweitstimme: any; //Zweitstimme
   public errorMessage: any;
 
 
@@ -55,7 +55,7 @@ export class LandtagswahlslComponent implements OnInit {
     this.getParties().subscribe(
       (data) => {
         console.log(data);
-        this.electionData4 = data;
+        this.Zweitstimme = data;
       }, (error) => {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);
