@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class BundestagswahlComponent implements OnInit {
   public electionData1: any; //date
+  public electionData2: any;
   public Erststimme: any; 
   public Zweitstimme: any;
   public errorMessage: any;

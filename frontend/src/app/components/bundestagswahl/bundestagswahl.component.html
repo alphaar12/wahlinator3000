@@ -29,7 +29,7 @@
       </div>
       <label></label>
 
-      <div *ngFor="let data of electionData3" class="auswahl">
+      <div *ngFor="let data of Erststimme" class="auswahl">
         <mat-checkbox formControlName="erststimme" #erststimme>
           <span>{{data.lastName}} {{data.firstName}}</span>
         </mat-checkbox>
@@ -52,7 +52,7 @@
       </div>
       <label></label>
 
-     <div *ngFor="let data of electionData4" class="auswahl">
+     <div *ngFor="let data of Zweitstimme" class="auswahl">
         <mat-checkbox formControlName="zweitstimme" #zweistimme>
           <span>{{data.abbrevation}}</span>
         </mat-checkbox>
