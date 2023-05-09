@@ -1,0 +1,5 @@
+// Politiker und ihre votes zur Election ID 1
+SELECT m.first_name, m.last_name, p.abbrevation , v.votes FROM election_political_member_Votes v, political_member m, political_party p WHERE v.political_member_ID = m.ID AND m.political_party_ID = p.ID AND v.Election_ID = 1;
+
+// Parteien und ihre votes zur Election ID 1
+SELECT p.abbrevation , v.votes FROM election_political_party_Votes v, political_party p WHERE v.political_party_ID = p.ID AND v.Election_ID = 1;
