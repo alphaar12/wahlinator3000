@@ -3,17 +3,11 @@
   <h3>Für die Wahl zum Landtag von Baden-Württemberg <br>
     im Wahlkreis
 
-    <a routerLink="/">
-      <span>{{electionData1?.type}}</span>
-      <span>{{electionData1?.region | slice:0:16}}</span>
-    </a>
+    <span>{{electionData2?.region | slice:0:16}}</span>
 
     am
 
-    <a routerLink="/">
-      <span>{{electionData2?.type}}</span>
-      <span>{{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
-    </a><br><br>
+    <span>{{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
 
   </h3>
   <h1><b>Jeder Wähler / Jede Wählerin hat eine Stimme.</b><br><br></h1>

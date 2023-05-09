@@ -3,6 +3,9 @@ import {ElectionService} from "../../services/election/election.service";
 import { StorageService } from '../../services/storage/storage.service';
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-landtagswahlbw',
@@ -10,20 +13,19 @@ import {catchError} from "rxjs/operators";
   styleUrls: ['./landtagswahlbw.component.css']
 })
 export class LandtagswahlbwComponent implements OnInit {
-  public electionData1: any; //date
   public electionData2: any; //wahlkreis
   public electionData3: any; //Erststimme
   public electionData4: any; //Zweitstimme
   public errorMessage: any;
+  private userDetails: any;
 
-  constructor(private electionService: ElectionService) {
+  constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private router: Router, private storageService: StorageService, private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.getElection(1).subscribe(
+    this.userService.getUserByPersonalNumber(this.storageService.getUser().personalNumber).subscribe(
       (data) => {
-        console.log(data);
-        this.electionData1 = data;
+        this.userDetails = data;
       },
       (error) => {
         this.errorMessage = error.error.message;
