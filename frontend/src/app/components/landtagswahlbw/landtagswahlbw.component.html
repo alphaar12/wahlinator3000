@@ -1,6 +1,3 @@
-
-<body>
-
 <div style="text-align: left;">
   <h1><b>Amtlicher Stimmzettel</b><br></h1>
   <h3>Für die Wahl zum Landtag von Baden-Württemberg <br>
@@ -11,7 +8,7 @@
       <span>{{electionData1?.region | slice:0:16}}</span>
     </a>
 
-      am
+    am
 
     <a routerLink="/">
       <span>{{electionData2?.type}}</span>
@@ -21,12 +18,9 @@
   </h3>
   <h1><b>Jeder Wähler / Jede Wählerin hat eine Stimme.</b><br><br></h1>
 </div>
-      <div *ngFor="let data of electionData3" class="auswahl">
-        <mat-checkbox>
-          <span>{{data.abbreviation}}</span>
-        </mat-checkbox>
-      </div>
-    </div>
-  <input type="submit" value="Absenden">
-</body>
-
+<div *ngFor="let data of electionData3" class="auswahl">
+  <mat-checkbox>
+    <span>{{data.abbreviation}}</span>
+  </mat-checkbox>
+</div>
+<input type="submit" value="Absenden">
