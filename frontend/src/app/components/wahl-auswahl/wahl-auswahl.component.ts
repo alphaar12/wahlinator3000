@@ -23,26 +23,31 @@ export class WahlAuswahlComponent implements OnInit {
   public hasVoted1 = true;
   public hasVoted2 = true;
 
+  public showButton1 = false;
+  public showButton2 = false;
+
   constructor(private electionService: ElectionService, private userService: UserService, private storageService: StorageService) {
   }
 
   ngOnInit(): void {
-    this.getElection(1).subscribe(
-      (data) => {
-        this.electionData1 = data;
-      },
-      (error) => {
-        this.errorMessage = error.error.message;
-        console.log(this.errorMessage);
-      }
-    );
-
     this.userService.getUserByPersonalNumber(this.storageService.getUser().personalNumber).subscribe((data) => {
         this.userDetails = data;
         this.landtagRoute = this.voteRouting();
+        this.getElection(1).subscribe(
+          (data) => {
+            console.log(data);
+            this.electionData1 = data;
+            this.showButton1 = this.checkAge(this.electionData1);
+          },
+          (error) => {
+            this.errorMessage = error.error.message;
+            console.log(this.errorMessage);
+          }
+        );
         this.getElection(this.landtagId).subscribe(
           (data) => {
             this.electionData2 = data;
+            this.showButton2 = this.checkAge(this.electionData2);
           },
           (error) => {
             this.errorMessage = error.error.message;
