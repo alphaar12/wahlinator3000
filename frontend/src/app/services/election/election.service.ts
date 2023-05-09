@@ -25,4 +25,12 @@ export class ElectionService {
   getHasVoted(userId: number, electionId: number) {
     return this.http.post(`${environment.apiUrl}/elections/hasVoted`, {userId, electionId});
   }
+
+  pushParty(userId: number, electionId:number, politicalPartyId:number) {
+    return this.http.post(`${environment.apiUrl}/election/vote/party`, {userId, electionId, politicalPartyId});
+  }
+
+  pushMember(userId: number, electionId:number, politicalMemberId:number) {
+    return this.http.post(`${environment.apiUrl}/election/vote/member`, {userId, electionId, politicalMemberId});
+  }
 }
