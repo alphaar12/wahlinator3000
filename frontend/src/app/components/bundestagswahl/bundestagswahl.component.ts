@@ -6,6 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {Router} from "@angular/router";
 import {StorageService} from "../../services/storage/storage.service";
 import {UserService} from "../../services/user/user.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-bundestagswahl',
@@ -19,8 +20,13 @@ export class BundestagswahlComponent implements OnInit {
   public Zweitstimme: any;
   public errorMessage: any;
   public userDetails: any;
+  wahlForm: FormGroup;
 
-  constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private router: Router, private storageService: StorageService, private userService: UserService) {
+  constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
+    this.wahlForm = this.formBuilder.group({
+      erststimme: ['', Validators.required],
+      zweitstimme: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
@@ -88,8 +94,8 @@ export class BundestagswahlComponent implements OnInit {
     return throwError(error);
   }
 
-  pushParty(userId: number, electionId: number, politicalPartyId:number) {
-    this.electionService.pushParty(this.userDetails.userId, electionId, politicalPartyId).subscribe({
+  pushParty(politicalPartyId:number) {
+    this.electionService.pushParty(this.userDetails.userId, 1, politicalPartyId).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000
@@ -106,8 +112,8 @@ export class BundestagswahlComponent implements OnInit {
     });
   }
 
-  pushMember(userId: number, electionId: number, politicalMemberIdList:Array<number>) {
-    this.electionService.pushMember(this.userDetails.userId, electionId, politicalMemberIdList).subscribe({
+  pushMember(politicalMemberIdList:Array<number>) {
+    this.electionService.pushMember(this.userDetails.userId, 1, politicalMemberIdList).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000

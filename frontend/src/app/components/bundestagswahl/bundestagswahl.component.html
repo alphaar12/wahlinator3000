@@ -14,7 +14,7 @@
   <h2 id="groß"><b>Sie haben 2 Stimmen</b><br><br></h2>
 </div>
 
-<form onsubmit="pushParty(); pushMember()">
+<form [formGroup]="wahlForm">
   <div class="container">
     <div class="erststimme">
       <div style="text-align: right;">
@@ -27,7 +27,6 @@
         <h2><b>eines
           /einer Wahlkreisabgeordneten<br><br><br>Erststimme</b></h2>
       </div>
-      <label></label>
 
       <div *ngFor="let data of Erststimme" class="auswahl">
         <mat-checkbox formControlName="erststimme" #erststimme>
@@ -53,12 +52,17 @@
       <label></label>
 
      <div *ngFor="let data of Zweitstimme" class="auswahl">
-        <mat-checkbox formControlName="zweitstimme" #zweistimme>
+        <mat-checkbox formControlName="zweitstimme" #zweitstimme>
           <span>{{data.abbrevation}}</span>
         </mat-checkbox>
       </div>
 
     </div>
   </div>
-  <input type="submit" value="Absenden">
+  <br>
+  <button type="submit" style="width: 100%"
+          (click)="pushParty(1)"
+           mat-raised-button color="accent" class="button">
+    Absenden
+  </button>
 </form>
