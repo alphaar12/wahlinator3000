@@ -3,6 +3,7 @@ import {ElectionService} from '../../services/election/election.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bundestagswahl',
@@ -11,12 +12,11 @@ import {catchError} from 'rxjs/operators';
 })
 export class BundestagswahlComponent implements OnInit {
   public electionData1: any; //date
-  public electionData2: any; //wahlkreis
   public electionData3: any; //Erststimme
   public electionData4: any; //Zweitstimme
   public errorMessage: any;
 
-  constructor(private electionService: ElectionService, private snackBar: MatSnackBar) {
+  constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,17 +24,6 @@ export class BundestagswahlComponent implements OnInit {
       (data) => {
         console.log(data);
         this.electionData1 = data;
-      },
-      (error) => {
-        this.errorMessage = error.error.message;
-        console.log(this.errorMessage);
-      }
-    );
-
-    this.getElection(2).subscribe(
-      (data) => {
-        console.log(data);
-        this.electionData2 = data;
       },
       (error) => {
         this.errorMessage = error.error.message;
@@ -84,6 +73,42 @@ export class BundestagswahlComponent implements OnInit {
   private handleError(error: any) {
     console.error(error);
     return throwError(error);
+  }
+
+  pushParty(userId: number, electionId: number, politicalPartyId:number) {
+    this.electionService.pushParty(userId, electionId, politicalPartyId).subscribe({
+      next: data => {
+        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+          duration: 3000
+        });
+        this.router.navigate([`/wahlAuswahl`]).then(() => {
+          window.location.reload();
+        });
+      },
+      error: err => {
+        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+          duration: 3000
+        });
+      }
+    });
+  }
+
+  pushMember(userId: number, electionId: number, politicalMemberIdList:Array<number>) {
+    this.electionService.pushMember(userId, electionId, politicalMemberIdList).subscribe({
+      next: data => {
+        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+          duration: 3000
+        });
+        this.router.navigate([`/wahlAuswahl`]).then(() => {
+          window.location.reload();
+        });
+      },
+      error: err => {
+        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+          duration: 3000
+        });
+      }
+    });
   }
 }
 

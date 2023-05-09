@@ -1,5 +1,3 @@
-<body>
-
 <div style="text-align: center;">
   <h1><b>STIMMZETTEL</b><br></h1>
   <h3>Für die Wahl zum Deutschen Bundestag <br>
@@ -9,7 +7,7 @@
 
     am
 
-      <span>{{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
+      <span>{{electionData1?.endDate | date: 'longDate': 'de-DE'}}</span>
     <br><br>
   </h3>
 
@@ -56,7 +54,7 @@
 
      <div *ngFor="let data of electionData4" class="auswahl">
         <mat-checkbox formControlName="zweitstimme" #zweistimme>
-          <span>{{data.abbreviation}}</span>
+          <span>{{data.abbrevation}}</span>
         </mat-checkbox>
       </div>
 
@@ -64,4 +62,3 @@
   </div>
   <input type="submit" value="Absenden">
 </form>
-</body>
