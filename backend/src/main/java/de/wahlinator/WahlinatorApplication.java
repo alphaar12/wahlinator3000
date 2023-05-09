@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WahlinatorApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WahlinatorApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WahlinatorApplication.class, args);
+    }
 
 }

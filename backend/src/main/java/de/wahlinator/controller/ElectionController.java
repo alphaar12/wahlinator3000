@@ -30,23 +30,10 @@ public class ElectionController {
     private PoliticalMemberRepository politicalMemberRepository;
 
     @GetMapping("/election/{id}")
-    public ResponseEntity<?> getElection(
-            @PathVariable int id
-    ) {
+    public ResponseEntity<?> getElection(@PathVariable int id) {
         if (electionRepository.existsById(id)) {
             Election election = electionRepository.findById(id).get();
-            return ResponseEntity.ok().body(
-                    new ElectionInfoResponse(
-                            election.getId(),
-                            election.getType(),
-                            election.getRegion(),
-                            election.getVotes(),
-                            election.getAge(),
-                            election.getStartDate(),
-                            election.getEndDate(),
-                            electionPoliticalPartyMemberRepository.findAllPoliticalPartiesById(id),
-                            electionPoliticalPartyMemberRepository.findAllPoliticalMembersById(id))
-            );
+            return ResponseEntity.ok().body(new ElectionInfoResponse(election.getId(), election.getType(), election.getRegion(), election.getVotes(), election.getAge(), election.getStartDate(), election.getEndDate(), electionPoliticalPartyMemberRepository.findAllPoliticalPartiesById(id), electionPoliticalPartyMemberRepository.findAllPoliticalMembersById(id)));
         } else {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Election not found!"));
         }
@@ -67,17 +54,13 @@ public class ElectionController {
     }
 
     @PostMapping("/hasVoted")
-    public ResponseEntity<?> hasVoted(
-            @RequestBody VoteRequest vote
-    ) {
+    public ResponseEntity<?> hasVoted(@RequestBody VoteRequest vote) {
         return ResponseEntity.ok().body(electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId()));
     }
 
     @Transactional
     @PutMapping("/vote/party")
-    public ResponseEntity<?> voteForParty(
-            @RequestBody VoteRequest vote
-    ) {
+    public ResponseEntity<?> voteForParty(@RequestBody VoteRequest vote) {
         if (!electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId())) {
             electionPoliticalPartyMemberRepository.voteForParty(vote.getUserId(), vote.getElectionId(), vote.getPoliticalPartyId());
             return ResponseEntity.ok(new MessageResponse("User voted successfully!"));
@@ -88,9 +71,7 @@ public class ElectionController {
 
     @Transactional
     @PutMapping("/vote/member")
-    public ResponseEntity<?> voteForMember(
-            @RequestBody VoteRequest vote
-    ) {
+    public ResponseEntity<?> voteForMember(@RequestBody VoteRequest vote) {
         if (!electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId())) {
             electionPoliticalPartyMemberRepository.voteForMember(vote.getUserId(), vote.getElectionId(), vote.getPoliticalMemberIdList());
             return ResponseEntity.ok(new MessageResponse("User voted successfully!"));

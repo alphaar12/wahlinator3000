@@ -18,10 +18,7 @@ public class UserController {
 
     @Transactional
     @PutMapping("/editUser/{personalNumber}")
-    public ResponseEntity<?> editUser(
-            @RequestBody User user,
-            @PathVariable String personalNumber
-    ) {
+    public ResponseEntity<?> editUser(@RequestBody User user, @PathVariable String personalNumber) {
         if (userRepository.existsByPersonalNumber(user.getPersonalNumber())) {
             userRepository.findByPersonalNumber(personalNumber).get().setPersonalNumber(user.getPersonalNumber());
             userRepository.findByPersonalNumber(personalNumber).get().setFirstName(user.getFirstName());
@@ -37,9 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/getUser/{personalNumber}")
-    public ResponseEntity<?> getSingleUser(
-            @PathVariable String personalNumber
-    ) {
+    public ResponseEntity<?> getSingleUser(@PathVariable String personalNumber) {
         if (userRepository.existsByPersonalNumber(personalNumber)) {
             User user = userRepository.findByPersonalNumber(personalNumber).get();
             return ResponseEntity.ok().body(user);
