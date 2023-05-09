@@ -54,15 +54,15 @@ export class WahlAuswahlComponent implements OnInit {
             console.log(this.errorMessage);
           }
         );
-        this.electionService.getHasVoted(this.userDetails.userId, 1).subscribe((data) => {
-            this.hasVoted1 = (data.toString() == "true");
+        this.electionService.getHasVoted(this.userDetails.id, 1).subscribe((data) => {
+          this.hasVoted1 = (data.toString() == "true");
           },
           (error) => {
             this.errorMessage = error.error.message;
             console.log(this.errorMessage);
           });
 
-        this.electionService.getHasVoted(this.userDetails.userId, this.landtagId).subscribe((data) => {
+        this.electionService.getHasVoted(this.userDetails.id, this.landtagId).subscribe((data) => {
             this.hasVoted2 = (data.toString() == "true");
           },
           (error) => {

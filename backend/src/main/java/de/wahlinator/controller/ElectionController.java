@@ -1,6 +1,7 @@
 package de.wahlinator.controller;
 
 import de.wahlinator.entity.Election;
+import de.wahlinator.entity.PoliticalParty;
 import de.wahlinator.payload.request.VoteRequest;
 import de.wahlinator.payload.response.ElectionInfoResponse;
 import de.wahlinator.payload.response.MessageResponse;
@@ -13,7 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true", maxAge = 3600)
+import java.util.List;
+import java.util.stream.Collectors;
+
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 @RestController
 @RequestMapping("/elections")
 public class ElectionController {
@@ -33,7 +37,12 @@ public class ElectionController {
     public ResponseEntity<?> getElection(@PathVariable int id) {
         if (electionRepository.existsById(id)) {
             Election election = electionRepository.findById(id).get();
-            return ResponseEntity.ok().body(new ElectionInfoResponse(election.getId(), election.getType(), election.getRegion(), election.getVotes(), election.getAge(), election.getStartDate(), election.getEndDate(), electionPoliticalPartyMemberRepository.findAllPoliticalPartiesById(id), electionPoliticalPartyMemberRepository.findAllPoliticalMembersById(id)));
+            List<PoliticalParty> allParties = politicalPartyRepository.findAll();
+            List<PoliticalParty> politicalParties = allParties.stream()
+                    .filter(o1 -> electionPoliticalPartyMemberRepository.findAllPoliticalPartiesById(id).stream()
+                            .anyMatch(o2 -> Integer.parseInt(o2.toString()) == o1.getId()))
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok().body(new ElectionInfoResponse(election.getId(), election.getType(), election.getRegion(), election.getVotes(), election.getAge(), election.getStartDate(), election.getEndDate(), politicalParties, electionPoliticalPartyMemberRepository.findAllPoliticalMembersById(id)));
         } else {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Election not found!"));
         }
@@ -58,8 +67,9 @@ public class ElectionController {
         return ResponseEntity.ok().body(electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId()));
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @Transactional
-    @PutMapping("/vote/party")
+    @PutMapping("/voteParty")
     public ResponseEntity<?> voteForParty(@RequestBody VoteRequest vote) {
         if (!electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId())) {
             electionPoliticalPartyMemberRepository.voteForParty(vote.getUserId(), vote.getElectionId(), vote.getPoliticalPartyId());
@@ -69,8 +79,9 @@ public class ElectionController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @Transactional
-    @PutMapping("/vote/member")
+    @PutMapping("/voteMember")
     public ResponseEntity<?> voteForMember(@RequestBody VoteRequest vote) {
         if (!electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId())) {
             electionPoliticalPartyMemberRepository.voteForMember(vote.getUserId(), vote.getElectionId(), vote.getPoliticalMemberIdList());

@@ -14,9 +14,9 @@ export class ElectionService {
     return this.http.get(`${environment.apiUrl}/elections/election/${electionId}`);
   }
 
-  getParties() {
-    return this.http.get(`${environment.apiUrl}/elections/parties`);
-  }
+  // getParties() {
+  //   return this.http.get(`${environment.apiUrl}/elections/parties`);
+  // }
 
   getMembers() {
     return this.http.get(`${environment.apiUrl}/elections/members`);
@@ -27,10 +27,10 @@ export class ElectionService {
   }
 
   pushParty(userId: number, electionId:number, politicalPartyId:number) {
-    return this.http.post(`${environment.apiUrl}/elections/vote/party`, {userId, electionId, politicalPartyId});
+    return this.http.put(`${environment.apiUrl}/elections/voteParty`, {userId, electionId, politicalPartyId});
   }
 
   pushMember(userId: number, electionId:number, politicalMemberIdList:Array<number>) {
-    return this.http.post(`${environment.apiUrl}/elections/vote/member`, {userId, electionId, politicalMemberIdList});
+    return this.http.put(`${environment.apiUrl}/elections/voteMember`, {userId, electionId, politicalMemberIdList});
   }
 }

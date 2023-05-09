@@ -2,13 +2,13 @@
 
 <div class="card-container">
   <a class="card" routerLink="/bundestagswahl"
-     *ngIf="checkIfElectionHasStarted(electionData1?.startDate) && showButton1">
+     *ngIf="checkIfElectionHasStarted(electionData1?.startDate) && showButton1 && !hasVoted1">
     <span>{{electionData1?.type}}</span>
     <span>Enddatum: {{electionData1?.endDate | date: 'longDate': 'de-DE'}}</span>
   </a>
 
   <a id="landtagswahl-button" routerLink="{{landtagRoute}}" class="card"
-     *ngIf="checkIfElectionHasStarted(electionData2?.startDate) && showButton2">
+     *ngIf="checkIfElectionHasStarted(electionData2?.startDate) && showButton2 && !hasVoted2">
     <span>{{electionData2?.type}}</span>
     <span>Enddatum: {{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
   </a>

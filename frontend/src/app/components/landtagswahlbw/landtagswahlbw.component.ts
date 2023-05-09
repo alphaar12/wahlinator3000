@@ -15,7 +15,7 @@ import {UserService} from "../../services/user/user.service";
 export class LandtagswahlbwComponent implements OnInit {
   public electionData2: any; //wahlkreis
   public electionData3: any; //Erststimme
-  public electionData4: any; //Zweitstimme
+  public parties: any; //Zweitstimme
   public errorMessage: any;
   private userDetails: any;
 
@@ -37,6 +37,7 @@ export class LandtagswahlbwComponent implements OnInit {
       (data) => {
         console.log(data);
         this.electionData2 = data;
+        this.parties = data.parties;
       },
       (error) => {
         this.errorMessage = error.error.message;
@@ -53,16 +54,6 @@ export class LandtagswahlbwComponent implements OnInit {
         console.log(this.errorMessage);
       }
     )
-
-    this.getParties().subscribe(
-      (data) => {
-        console.log(data);
-        this.electionData4 = data;
-      }, (error) => {
-        this.errorMessage = error.error.message;
-        console.log(this.errorMessage);
-      }
-    )
   }
 
   getElection(electionId: number): Observable<any> {
@@ -74,12 +65,6 @@ export class LandtagswahlbwComponent implements OnInit {
   getMembers(): Observable<any> {
     return this.electionService
       .getMembers()
-      .pipe(catchError(this.handleError));
-  }
-
-  getParties(): Observable<any> {
-    return this.electionService
-      .getParties()
       .pipe(catchError(this.handleError));
   }
 

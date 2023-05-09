@@ -57,7 +57,6 @@ public class WebSecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/elections/**").permitAll()
-                .antMatchers("/elections/vote/**").permitAll()
                 .antMatchers("/admin/**").permitAll()
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated();

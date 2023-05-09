@@ -17,7 +17,7 @@ export class BundestagswahlComponent implements OnInit {
   public electionData1: any; //date
   public electionData2: any;
   public Erststimme: any;
-  public Zweitstimme: any;
+  public parties: any;
   public errorMessage: any;
   public userDetails: any;
   wahlForm: FormGroup;
@@ -33,6 +33,7 @@ export class BundestagswahlComponent implements OnInit {
     this.userService.getUserByPersonalNumber(this.storageService.getUser().personalNumber).subscribe(
       (data) => {
         this.userDetails = data;
+        console.log(this.userDetails);
       },
       (error) => {
         this.errorMessage = error.error.message;
@@ -43,6 +44,7 @@ export class BundestagswahlComponent implements OnInit {
       (data) => {
         console.log(data);
         this.electionData1 = data;
+        this.parties = data.parties;
       },
       (error) => {
         this.errorMessage = error.error.message;
@@ -54,16 +56,6 @@ export class BundestagswahlComponent implements OnInit {
       (data) => {
         console.log(data);
         this.Erststimme = data;
-      }, (error) => {
-        this.errorMessage = error.error.message;
-        console.log(this.errorMessage);
-      }
-    )
-
-    this.getParties().subscribe(
-      (data) => {
-        console.log(data);
-        this.Zweitstimme = data;
       }, (error) => {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);
@@ -83,19 +75,13 @@ export class BundestagswahlComponent implements OnInit {
       .pipe(catchError(this.handleError));
   }
 
-  getParties(): Observable<any> {
-    return this.electionService
-      .getParties()
-      .pipe(catchError(this.handleError));
-  }
-
   private handleError(error: any) {
     console.error(error);
     return throwError(error);
   }
 
   pushParty(politicalPartyId:number) {
-    this.electionService.pushParty(this.userDetails.userId, 1, politicalPartyId).subscribe({
+    this.electionService.pushParty(this.userDetails.id, 1, politicalPartyId).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000
@@ -113,7 +99,7 @@ export class BundestagswahlComponent implements OnInit {
   }
 
   pushMember(politicalMemberIdList:Array<number>) {
-    this.electionService.pushMember(this.userDetails.userId, 1, politicalMemberIdList).subscribe({
+    this.electionService.pushMember(this.userDetails.id, 1, politicalMemberIdList).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000

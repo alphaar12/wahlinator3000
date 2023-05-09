@@ -50,9 +50,9 @@
         <h2><b>Zweitstimme</b><br></h2>
       </div>
 
-     <div *ngFor="let data of Zweitstimme" class="auswahl">
+     <div *ngFor="let party of parties" class="auswahl">
         <mat-checkbox formControlName="zweitstimme" #zweitstimme>
-          <span>{{data.abbrevation}}</span>
+          <span>{{party.abbrevation}}</span>
         </mat-checkbox>
       </div>
 

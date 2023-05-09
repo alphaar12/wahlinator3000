@@ -12,9 +12,9 @@
   </h3>
   <h1><b>Jeder Wähler / Jede Wählerin hat eine Stimme.</b><br><br></h1>
 </div>
-<div *ngFor="let data of electionData4" class="auswahl">
+<div *ngFor="let party of parties" class="auswahl">
   <mat-checkbox>
-    <span>{{data.abbrevation}}</span>
+    <span>{{party.abbrevation}}</span>
   </mat-checkbox>
 </div>
 <input type="submit" value="Absenden">
