@@ -8,11 +8,13 @@ services:
           MYSQL_DATABASE: wahlinatordb
           MYSQL_USER: admin
           MYSQL_PASSWORD: admin
+          LANG: C.UTF-8
         container_name: wahlinator-db
         networks:
           - backend
         ports:
           - '3306:3306'
+        command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     wahlinator-backend:
         build: ./backend
         restart: always
