@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ElectionService} from "../../services/election/election.service";
+import { StorageService } from '../../services/storage/storage.service';
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 

@@ -20,7 +20,7 @@ export class BundestagswahlComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getElection(1).subscribe(
+    this.getElection(1).subscribe(//Bundestagswhl
       (data) => {
         console.log(data);
         this.electionData1 = data;
