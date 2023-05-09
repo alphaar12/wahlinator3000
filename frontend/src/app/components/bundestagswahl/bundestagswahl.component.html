@@ -37,7 +37,7 @@
       <label for="erststimme"></label>
 
       <div *ngFor="let data of electionData3" class="auswahl">
-        <mat-checkbox>
+        <mat-checkbox formControlName="erststimme" #erststimme>
           <span>{{data.lastName}} {{data.firstName}}</span>
         </mat-checkbox>
       </div>
@@ -60,13 +60,13 @@
       <label for="zweitstimme"></label>
 
      <div *ngFor="let data of electionData4" class="auswahl">
-        <mat-checkbox>
+        <mat-checkbox formControlName="zweitstimme" #zweistimme>
           <span>{{data.abbreviation}}</span>
         </mat-checkbox>
       </div>
 
     </div>
   </div>
-  <input type="submit" value="Absenden">
+  <input type="submit" value="Absenden" (click)="pushData(erststimme.value, zweitstimme.value)">
 </form>
 </body>
