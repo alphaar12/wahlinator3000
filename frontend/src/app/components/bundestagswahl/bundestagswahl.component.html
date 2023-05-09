@@ -34,7 +34,7 @@
         <h2><b>eines
           /einer Wahlkreisabgeordneten<br><br><br>Erststimme</b></h2>
       </div>
-      <label for="erststimme"></label>
+      <label></label>
 
       <div *ngFor="let data of electionData3" class="auswahl">
         <mat-checkbox formControlName="erststimme" #erststimme>
@@ -57,7 +57,7 @@
         <h3>-maßgebende Stimme für die Verteilung der Sitze insgesamt auf die einzelnen Parteien-</h3>
         <h2><b>Zweitstimme</b><br></h2>
       </div>
-      <label for="zweitstimme"></label>
+      <label></label>
 
      <div *ngFor="let data of electionData4" class="auswahl">
         <mat-checkbox formControlName="zweitstimme" #zweistimme>
@@ -67,6 +67,6 @@
 
     </div>
   </div>
-  <input type="submit" value="Absenden" (click)="pushData(erststimme.value, zweitstimme.value)">
+  <input type="submit" value="Absenden">
 </form>
 </body>

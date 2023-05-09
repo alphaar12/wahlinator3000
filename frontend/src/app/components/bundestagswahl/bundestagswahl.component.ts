@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ElectionService} from '../../services/election/election.service';
-import {Router} from '@angular/Router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
@@ -17,7 +16,7 @@ export class BundestagswahlComponent implements OnInit {
   public electionData4: any; //Zweitstimme
   public errorMessage: any;
 
-  constructor(private electionService: ElectionService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private electionService: ElectionService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -62,16 +61,6 @@ export class BundestagswahlComponent implements OnInit {
         console.log(this.errorMessage);
       }
     )
-
-    this.pushData(erststimme: any, zweitstimme: any).subscribe {
-      next: data => {
-        this.snackBar.open('Wahl wurder erfolgreich durchgeführt!', 'OK', {
-          duration: 3000
-        });
-      },
-
-
-    }
   }
 
   getElection(electionId: number): Observable<any> {
