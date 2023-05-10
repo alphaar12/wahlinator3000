@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ElectionService} from '../../services/election/election.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Observable, throwError} from 'rxjs';
+import {Observable, throwError, Subscription} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from "@angular/router";
 import {StorageService} from "../../services/storage/storage.service";
@@ -21,11 +21,13 @@ export class BundestagswahlComponent implements OnInit {
   public errorMessage: any;
   public userDetails: any;
   wahlForm: FormGroup;
+  form: FormGroup;
+  formSubscription: Subscription;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
     this.wahlForm = this.formBuilder.group({
-      erststimme: ['', Validators.required],
-      zweitstimme: ['', Validators.required],
+      erststimme: null,
+      zweitstimme: null
     });
   }
 
@@ -60,7 +62,29 @@ export class BundestagswahlComponent implements OnInit {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);
       }
-    )
+    );
+
+    this.formSubscription = this.form.controls.zweitstimme.valueChanges.subscribe((value) => {
+      if (value) {
+        for (const controllName in this.form.controls) {
+          if (controllName !== 'zweitstimme') {
+            this.form.controls[controlName].setValue(null);
+            }
+          }
+        }
+      }
+    );
+
+    this.formSubscription = this.form.controls.erststimme.valueChanges.subscribe((value) => {
+      if (value) {
+        for (const controllName in this.form.controls) {
+          if (controllName !== 'erststimme') {
+            this.form.controls[controlName].setValue(null);
+            }
+          }
+        }
+      } 
+    );
   }
 
   getElection(electionId: number): Observable<any> {
