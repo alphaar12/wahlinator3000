@@ -4,23 +4,13 @@ import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {UserService} from "../../services/user/user.service";
 import {StorageService} from "../../services/storage/storage.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+
 
 @Component({
   selector: 'app-wahl-auswahl',
   templateUrl: './wahl-auswahl.component.html',
   styleUrls: ['./wahl-auswahl.component.css'],
 })
-
-export class YourComponent {
-  form: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      zweitstimme: null
-    });
-  }
-}
 
 export class WahlAuswahlComponent implements OnInit {
   public electionData1: any;
@@ -38,10 +28,7 @@ export class WahlAuswahlComponent implements OnInit {
   public showButton1 = false;
   public showButton2 = false;
 
-  constructor(private electionService: ElectionService, private userService: UserService, private storageService: StorageService, private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      zweitstimme : null;
-    })
+  constructor(private electionService: ElectionService, private userService: UserService, private storageService: StorageService) {
   }
 
   ngOnInit(): void {
