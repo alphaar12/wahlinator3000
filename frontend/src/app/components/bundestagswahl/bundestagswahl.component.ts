@@ -125,6 +125,3 @@ export class BundestagswahlComponent implements OnInit {
     });
   }
 }
-
-
-

@@ -32,7 +32,7 @@ export class LandtagswahlslComponent implements OnInit {
       }
     );
 
-    this.getElection(2).subscribe(
+    this.getElection(3).subscribe(
       (data) => {
         console.log(data);
         this.electionData2 = data;
