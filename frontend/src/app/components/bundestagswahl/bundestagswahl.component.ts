@@ -6,7 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {Router} from "@angular/router";
 import {StorageService} from "../../services/storage/storage.service";
 import {UserService} from "../../services/user/user.service";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-bundestagswahl',
@@ -20,13 +20,13 @@ export class BundestagswahlComponent implements OnInit {
   public parties: any;
   public errorMessage: any;
   public userDetails: any;
-  form: FormGroup;
+  wahlForm: FormGroup;
   formSubscription?: Subscription;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
-    this.form = this.formBuilder.group({
-      erststimme: new FormControl(''),
-      zweitstimme: new FormControl('')
+    this.wahlForm = this.formBuilder.group({
+      erststimme: null,
+      zweitstimme: null
     });
   }
 
@@ -41,7 +41,7 @@ export class BundestagswahlComponent implements OnInit {
         console.log(this.errorMessage);
       }
     );
-    this.getElection(1).subscribe(//Bundestagswhl
+    this.getElection(1).subscribe(//Bundestagswahl
       (data) => {
         console.log(data);
         this.electionData1 = data;
@@ -62,28 +62,14 @@ export class BundestagswahlComponent implements OnInit {
         console.log(this.errorMessage);
       }
     );
+  }
 
-    this.formSubscription = this.form.controls['zweitstimme'].valueChanges.subscribe((value) => {
-      if (value) {
-        for (const controllName in this.form.controls) {
-          if (controllName !== 'zweitstimme') {
-            this.form.controls[controllName].setValue(null);
-            }
-          }
-        }
-      }
-    );
-
-    this.formSubscription = this.form.controls['erststimme'].valueChanges.subscribe((value) => {
-      if (value) {
-        for (const controllName in this.form.controls) {
-          if (controllName !== 'erststimme') {
-            this.form.controls[controllName].setValue(null);
-            }
-          }
-        }
-      }
-    );
+  toggleRadio(event: any, controlName: string) {
+    if (this.wahlForm.get(controlName)?.value === event.value) {
+      this.wahlForm.get(controlName)?.setValue(null);
+    } else {
+      this.wahlForm.get(controlName)?.setValue(event.value);
+    }
   }
 
   getElection(electionId: number): Observable<any> {
@@ -139,6 +125,3 @@ export class BundestagswahlComponent implements OnInit {
     });
   }
 }
-
-
-

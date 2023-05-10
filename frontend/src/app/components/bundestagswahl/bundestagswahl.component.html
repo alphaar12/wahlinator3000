@@ -2,47 +2,36 @@
   <h1><b>STIMMZETTEL</b><br></h1>
   <h3>Für die Wahl zum Deutschen Bundestag <br>
     im Wahlkreis
-
-      <span>{{this.userDetails?.constituency}}</span>
-
+    <span>{{this.userDetails?.constituency}}</span>
     am
-
-      <span>{{electionData1?.endDate | date: 'longDate': 'de-DE'}}</span>
+    <span>{{electionData1?.endDate | date: 'longDate': 'de-DE'}}</span>
     <br><br>
   </h3>
-
   <h2 id="groß"><b>Sie haben 2 Stimmen</b><br><br></h2>
 </div>
 
-<form [formGroup]="form">
+<form [formGroup]="wahlForm">
   <div class="container">
     <div class="erststimme">
       <div style="text-align: right;">
-        <img
-          class="bild"
-          src="assets/wahl1.png"
-        />
+        <img class="bild" src="assets/wahl1.png" />
         <h2><b>Hier 1 Stimme</b><br></h2>
         <h3>für die Wahl<br></h3>
-        <h2><b>eines
-          /einer Wahlkreisabgeordneten<br><br><br>Erststimme</b></h2>
+        <h2><b>eines /einer Wahlkreisabgeordneten<br><br><br>Erststimme</b></h2>
       </div>
 
-      <div *ngFor="let data of Erststimme" class="auswahl">
-        <mat-checkbox formControlName="erststimme" [value]="data">
-          <span>{{data.lastName}}  {{data.firstName}}</span>
-        </mat-checkbox>
-      </div>
-
+      <!-- Erststimme -->
+      <mat-radio-group formControlName="erststimme">
+        <div *ngFor="let data of Erststimme" class="auswahl">
+          <mat-radio-button [value]="data.id" (click)="toggleRadio($event, 'erststimme')">{{data.lastName}} {{data.firstName}}</mat-radio-button>
+        </div>
+      </mat-radio-group>
     </div>
     <br><br><br><br>
 
     <div class="zweitstimme">
       <div style="text-align: left;">
-        <img
-          class="bild"
-          src="assets/wahl2.png"
-        />
+        <img class="bild" src="assets/wahl2.png" />
         <h2><b>Hier 1 Stimme</b><br></h2>
         <h3>für die Wahl<br></h3>
         <h2><b>einer Landesliste (Partei)</b><br></h2>
@@ -50,18 +39,16 @@
         <h2><b>Zweitstimme</b><br></h2>
       </div>
 
-      <div *ngFor="let party of parties" class="auswahl">
-        <mat-checkbox formControlName="zweitstimme" [value]="party.abbrevation">
-          <span>{{party.abbrevation}}</span>
-        </mat-checkbox>
-      </div>
-
+      <!-- Zweitstimme -->
+      <mat-radio-group formControlName="zweitstimme">
+        <div *ngFor="let party of parties" class="auswahl">
+          <mat-radio-button [value]="party.id" (click)="toggleRadio($event, 'zweitstimme')">{{party.abbrevation}}</mat-radio-button>
+        </div>
+      </mat-radio-group>
     </div>
   </div>
   <br>
-  <button type="submit" style="width: 100%"
-          (click)="pushParty(1)"
-           mat-raised-button color="accent" class="button">
+  <button type="submit" style="width: 100%" (click)="pushParty(1)" mat-raised-button color="accent" class="button">
     Absenden
   </button>
 </form>
