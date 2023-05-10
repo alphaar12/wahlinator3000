@@ -24,14 +24,12 @@ export class BundestagswahlComponent implements OnInit {
   formSubscription?: Subscription;
   selectedParty: any;
   selectedMember: any;
-  private wahlErfolgreich: boolean;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
     this.wahlForm = this.formBuilder.group({
       erststimme: null,
       zweitstimme: null,
     });
-    this.wahlErfolgreich = false;
   }
 
   ngOnInit(): void {
@@ -101,8 +99,8 @@ export class BundestagswahlComponent implements OnInit {
     return throwError(error);
   }
 
-  print(){
-    let id:number;
+  print() {
+    let id: number;
     if (this.selectedParty) {
       id = this.selectedParty.id
     } else {
@@ -113,56 +111,43 @@ export class BundestagswahlComponent implements OnInit {
 
   push(politicalMemberIdList: Array<number>) {
     //getPartyID
-    let partyId:number;
+    let partyId: number;
     if (this.selectedParty) {
       partyId = this.selectedParty.id;
     } else {
       partyId = 0;
     }
 
-    //set bool wahlerflogreich = true, if pushParty succesfull
-    this.electionService.pushParty(this.userDetails.id, 1, partyId).subscribe({
-      next: data => {
-        this.electionService.pushMember(this.userDetails.id, 1, politicalMemberIdList).subscribe({
-          next: data => {
-            this.wahlErfolgreich = true;            
-          },
-          error: err => {
-            this.wahlErfolgreich = false;
-          }
-        });
-      }
-    });
-    
-    //get memberID
-    let memberId:number;
+    let memberId: number;
     if (this.selectedMember) {
-        memberId = this.selectedMember.id;
+      memberId = this.selectedMember.id;
     } else {
       memberId = 0;
     }
 
-    //set bool wahlerflogreich = true, if pushMember succesfull
-    this.electionService.pushMember(this.userDetails.id, 1, memberId).subscribe({
+    this.electionService.pushParty(this.userDetails.id, 1, partyId).subscribe({
       next: data => {
-        this.wahlErfolgreich = true;
+        this.electionService.pushMember(this.userDetails.id, 1, politicalMemberIdList).subscribe({
+          next: data => {
+            this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+              duration: 3000
+            });
+            this.router.navigate([`/wahlAuswahl`]).then(() => {
+              window.location.reload();
+            });
+          },
+          error: err => {
+            this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+              duration: 3000
+            });
+          }
+        });
       },
       error: err => {
-        this.wahlErfolgreich = false;
+        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+          duration: 3000
+        });
       }
-    })
-  
-    if (this.wahlErfolgreich) {
-      this.snackBar.open("Wahl erfolgreich!" , "OK", {
-        duration: 3000
-      });
-      this.router.navigate([`/wahlAuswahl`]).then(() => {
-        window.location.reload();
-      });
-    } else {
-      this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK' {
-        duration: 3000
-      });
-    }
+    });
   }
 }
