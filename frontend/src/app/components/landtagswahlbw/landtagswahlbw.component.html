@@ -1,20 +1,26 @@
-<div style="text-align: left;">
-  <h1><b>Amtlicher Stimmzettel</b><br></h1>
-  <h3>Für die Wahl zum Landtag von Baden-Württemberg <br>
-    im Wahlkreis
+<form [formGroup]="wahlForm">
+  <div style="text-align: left;">
+    <h1><b>Amtlicher Stimmzettel</b><br></h1>
+    <h3>Für die Wahl zum Landtag von Baden-Württemberg <br>
+      im Wahlkreis
 
-    <span>{{electionData2?.region | slice:0:16}}</span>
+      <span>{{electionData2?.region | slice:0:16}}</span>
 
-    am
+      am
 
-    <span>{{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
+      <span>{{electionData2?.endDate | date: 'longDate': 'de-DE'}}</span>
 
-  </h3>
-  <h1><b>Jeder Wähler / Jede Wählerin hat eine Stimme.</b><br><br></h1>
-</div>
-<div *ngFor="let party of parties" class="auswahl">
-  <mat-checkbox>
-    <span>{{party.abbrevation}}</span>
-  </mat-checkbox>
-</div>
-<input type="submit" value="Absenden">
+    </h3>
+    <h1><b>Jeder Wähler / Jede Wählerin hat eine Stimme.</b><br><br></h1>
+  </div>
+  <mat-radio-group formControlName="erststimme">
+    <div *ngFor="let party of parties" class="auswahl">
+      <mat-radio-button [value]="party.id"
+                        (click)="toggleRadio($event, 'erststimme')">{{party.abbrevation}}</mat-radio-button>
+    </div>
+  </mat-radio-group>
+  <br>
+  <button type="submit" style="width: 100%" (click)="pushParty(1)" mat-raised-button color="accent" class="button">
+    Absenden
+  </button>
+</form>

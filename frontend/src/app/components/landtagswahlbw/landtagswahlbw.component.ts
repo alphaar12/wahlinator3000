@@ -6,6 +6,7 @@ import {catchError} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user/user.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-landtagswahlbw',
@@ -18,8 +19,12 @@ export class LandtagswahlbwComponent implements OnInit {
   public parties: any; //Zweitstimme
   public errorMessage: any;
   private userDetails: any;
+  wahlForm: FormGroup;
 
-  constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private router: Router, private storageService: StorageService, private userService: UserService) {
+  constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder, private storageService: StorageService, private userService: UserService) {
+    this.wahlForm = this.formBuilder.group({
+      erststimme: null,
+    });
   }
 
   ngOnInit(): void {
@@ -56,6 +61,14 @@ export class LandtagswahlbwComponent implements OnInit {
     )
   }
 
+  toggleRadio(event: any, controlName: string) {
+    if (this.wahlForm.get(controlName)?.value === event.value) {
+      this.wahlForm.get(controlName)?.setValue(null);
+    } else {
+      this.wahlForm.get(controlName)?.setValue(event.value);
+    }
+  }
+
   getElection(electionId: number): Observable<any> {
     return this.electionService
       .getElection(electionId)
@@ -73,8 +86,8 @@ export class LandtagswahlbwComponent implements OnInit {
     return throwError(error);
   }
 
-  pushParty(userId: number, electionId: number, politicalPartyId: number) {
-    this.electionService.pushParty(userId, electionId, politicalPartyId).subscribe({
+  pushParty(politicalPartyId: number) {
+    this.electionService.pushParty(this.userDetails.id, 2, politicalPartyId).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000
@@ -91,8 +104,8 @@ export class LandtagswahlbwComponent implements OnInit {
     });
   }
 
-  pushMember(userId: number, electionId: number, politicalMemberIdList: Array<number>) {
-    this.electionService.pushMember(userId, electionId, politicalMemberIdList).subscribe({
+  pushMember(politicalMemberIdList: Array<number>) {
+    this.electionService.pushMember(this.userDetails.id, 2, politicalMemberIdList).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000
