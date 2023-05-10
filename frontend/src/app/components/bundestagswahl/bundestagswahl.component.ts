@@ -6,7 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {Router} from "@angular/router";
 import {StorageService} from "../../services/storage/storage.service";
 import {UserService} from "../../services/user/user.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-bundestagswahl',
@@ -20,14 +20,13 @@ export class BundestagswahlComponent implements OnInit {
   public parties: any;
   public errorMessage: any;
   public userDetails: any;
-  wahlForm: FormGroup;
   form: FormGroup;
-  formSubscription: Subscription;
+  formSubscription?: Subscription;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
-    this.wahlForm = this.formBuilder.group({
-      erststimme: null,
-      zweitstimme: null
+    this.form = this.formBuilder.group({
+      erststimme: new FormControl(''),
+      zweitstimme: new FormControl('')
     });
   }
 
@@ -64,26 +63,26 @@ export class BundestagswahlComponent implements OnInit {
       }
     );
 
-    this.formSubscription = this.form.controls.zweitstimme.valueChanges.subscribe((value) => {
+    this.formSubscription = this.form.controls['zweitstimme'].valueChanges.subscribe((value) => {
       if (value) {
         for (const controllName in this.form.controls) {
           if (controllName !== 'zweitstimme') {
-            this.form.controls[controlName].setValue(null);
+            this.form.controls[controllName].setValue(null);
             }
           }
         }
       }
     );
 
-    this.formSubscription = this.form.controls.erststimme.valueChanges.subscribe((value) => {
+    this.formSubscription = this.form.controls['erststimme'].valueChanges.subscribe((value) => {
       if (value) {
         for (const controllName in this.form.controls) {
           if (controllName !== 'erststimme') {
-            this.form.controls[controlName].setValue(null);
+            this.form.controls[controllName].setValue(null);
             }
           }
         }
-      } 
+      }
     );
   }
 

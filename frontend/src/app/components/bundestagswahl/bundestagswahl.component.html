@@ -14,7 +14,7 @@
   <h2 id="groß"><b>Sie haben 2 Stimmen</b><br><br></h2>
 </div>
 
-<form [formGroup]="wahlForm">
+<form [formGroup]="form">
   <div class="container">
     <div class="erststimme">
       <div style="text-align: right;">
@@ -29,8 +29,8 @@
       </div>
 
       <div *ngFor="let data of Erststimme" class="auswahl">
-        <mat-checkbox [formControl]="form.controls.erststimme" [value]="data">
-          <span>{{data.lastName}} {{data.firstName}}</span>
+        <mat-checkbox formControlName="erststimme" [value]="data">
+          <span>{{data.lastName}}  {{data.firstName}}</span>
         </mat-checkbox>
       </div>
 
@@ -51,7 +51,7 @@
       </div>
 
       <div *ngFor="let party of parties" class="auswahl">
-        <mat-checkbox [formControl]="form.controls.zweitstimme" [value]="party.abbrevation">
+        <mat-checkbox formControlName="zweitstimme" [value]="party.abbrevation">
           <span>{{party.abbrevation}}</span>
         </mat-checkbox>
       </div>
