@@ -21,7 +21,6 @@ export class BundestagswahlComponent implements OnInit {
   public errorMessage: any;
   public userDetails: any;
   wahlForm: FormGroup;
-  form: FormGroup;
   formSubscription?: Subscription;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
@@ -42,7 +41,7 @@ export class BundestagswahlComponent implements OnInit {
         console.log(this.errorMessage);
       }
     );
-    this.getElection(1).subscribe(//Bundestagswhl
+    this.getElection(1).subscribe(//Bundestagswahl
       (data) => {
         console.log(data);
         this.electionData1 = data;
@@ -61,28 +60,6 @@ export class BundestagswahlComponent implements OnInit {
       }, (error) => {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);
-      }
-    );
-
-    this.formSubscription = this.form.controls.zweitstimme.valueChanges.subscribe((value) => {
-      if (value) {
-        for (const controllName in this.form.controls) {
-          if (controllName !== 'zweitstimme') {
-            this.form.controls[controlName].setValue(null);
-            }
-          }
-        }
-      }
-    );
-
-    this.formSubscription = this.form.controls.erststimme.valueChanges.subscribe((value) => {
-      if (value) {
-        for (const controllName in this.form.controls) {
-          if (controllName !== 'erststimme') {
-            this.form.controls[controlName].setValue(null);
-            }
-          }
-        }
       }
     );
   }

@@ -36,6 +36,7 @@ import { LandtagswahlslComponent } from './components/landtagswahlsl/landtagswah
 import { Landtagswahl1Component } from './components/landtagswahl1/landtagswahl1.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -51,31 +52,32 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     LandtagswahlslComponent,
     Landtagswahl1Component
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterOutlet,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    RouterModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatMenuModule,
-    MatIconModule,
-    MatExpansionModule,
-    MatTabsModule,
-    MatStepperModule,
-    MatCheckboxModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterOutlet,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        RouterModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSnackBarModule,
+        MatSelectModule,
+        MatMenuModule,
+        MatIconModule,
+        MatExpansionModule,
+        MatTabsModule,
+        MatStepperModule,
+        MatCheckboxModule,
+        MatRadioModule,
+    ],
   exports: [
     HttpClientModule,
     ReactiveFormsModule,
