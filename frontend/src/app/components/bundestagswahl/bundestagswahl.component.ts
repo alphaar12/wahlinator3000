@@ -104,38 +104,29 @@ export class BundestagswahlComponent implements OnInit {
     console.log(id);
   }
 
-  pushParty() {
-    let id:number;
+  push(politicalMemberIdList: Array<number>) {
+    let partyId:number;
     if (this.selectedParty) {
-      id = this.selectedParty.id
+      partyId = this.selectedParty.id
     } else {
-      id = 0;
+      partyId = 0;
     }
-    this.electionService.pushParty(this.userDetails.id, 1, id).subscribe({
+    this.electionService.pushParty(this.userDetails.id, 1, partyId).subscribe({
       next: data => {
-        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
-          duration: 3000
-        });
-        this.router.navigate([`/wahlAuswahl`]).then(() => {
-          window.location.reload();
-        });
-      },
-      error: err => {
-        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
-          duration: 3000
-        });
-      }
-    });
-  }
-
-  pushMember(politicalMemberIdList:Array<number>) {
-    this.electionService.pushMember(this.userDetails.id, 1, politicalMemberIdList).subscribe({
-      next: data => {
-        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
-          duration: 3000
-        });
-        this.router.navigate([`/wahlAuswahl`]).then(() => {
-          window.location.reload();
+        this.electionService.pushMember(this.userDetails.id, 1, politicalMemberIdList).subscribe({
+          next: data => {
+            this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+              duration: 3000
+            });
+            this.router.navigate([`/wahlAuswahl`]).then(() => {
+              window.location.reload();
+            });
+          },
+          error: err => {
+            this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+              duration: 3000
+            });
+          }
         });
       },
       error: err => {

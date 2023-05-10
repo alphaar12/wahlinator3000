@@ -83,7 +83,7 @@ public class ElectionController {
     @Transactional
     @PutMapping("/voteMember")
     public ResponseEntity<?> voteForMember(@RequestBody VoteRequest vote) {
-        if (!electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId())) {
+        if (!electionPoliticalPartyMemberRepository.hasVoted(vote.getUserId(), vote.getElectionId()) || (vote.getElectionId() == 1)) {
             electionPoliticalPartyMemberRepository.voteForMember(vote.getUserId(), vote.getElectionId(), vote.getPoliticalMemberIdList());
             return ResponseEntity.ok(new MessageResponse("User voted successfully!"));
         } else {
