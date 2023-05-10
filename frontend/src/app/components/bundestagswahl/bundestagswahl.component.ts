@@ -22,7 +22,7 @@ export class BundestagswahlComponent implements OnInit {
   public userDetails: any;
   wahlForm: FormGroup;
   form: FormGroup;
-  formSubscription: Subscription;
+  formSubscription?: Subscription;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
     this.wahlForm = this.formBuilder.group({
