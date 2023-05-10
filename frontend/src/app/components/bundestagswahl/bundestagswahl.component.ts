@@ -83,8 +83,16 @@ export class BundestagswahlComponent implements OnInit {
             }
           }
         }
-      } 
+      }
     );
+  }
+
+  toggleRadio(event: any, controlName: string) {
+    if (this.wahlForm.get(controlName)?.value === event.value) {
+      this.wahlForm.get(controlName)?.setValue(null);
+    } else {
+      this.wahlForm.get(controlName)?.setValue(event.value);
+    }
   }
 
   getElection(electionId: number): Observable<any> {
