@@ -23,10 +23,9 @@
       <!-- Erststimme -->
       <mat-radio-group formControlName="erststimme">
         <div *ngFor="let member of members" class="auswahl">
-          <mat-radio-button [value]="member.id" (click)="toggleRadio($event, 'erststimme')">
-          <p>{{member.lastName}} {{member.firstName}}</p>
-          <p>{{member.profession}}</p>
-          <p style="max-width: 60%; font-size: 0.5rem;" align="right"> {{member.political_party_id}}</p>
+          <mat-radio-button [value]="member.id" (click)="toggleRadio($event, 'erststimme')" (change)="onSelectionMemberChange(member)">
+           <p><span style="font-weight: bold">{{member.lastName}}</span><span>, {{member.firstName}}</span></p>
+          <p style="max-width: 60%; font-size: 0.7rem;">{{member.profession}}</p>
           </mat-radio-button>
         </div>
       </mat-radio-group>
@@ -48,7 +47,7 @@
         <div *ngFor="let party of parties" class="auswahl" style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
           <mat-radio-button style="width: 100%" [value]="party.id" (click)="toggleRadio($event, 'zweitstimme')" (change)="onSelectionChange(party)">
             <p style="font-size: 0.7rem;">{{party.name}}</p>
-            <p>{{party.abbrevation}}</p>
+            <p style="font-weight: bold">{{party.abbrevation}}</p>
           </mat-radio-button>
           <p style="max-width: 60%; font-size: 0.5rem;" align="right">{{electionData1.partyMembers[party.id - 1] | slice: -1 :2}}</p>
         </div>
@@ -56,7 +55,7 @@
     </div>
   </div>
   <br>
-  <button type="submit" style="width: 100%" (click)="push([1,2,3])" mat-raised-button color="accent" class="button">
+  <button type="submit" style="width: 100%" (click)="push()" mat-raised-button color="accent" class="button">
     Absenden
   </button>
 </form>

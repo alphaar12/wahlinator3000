@@ -14,14 +14,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./bundestagswahl.component.css']
 })
 export class BundestagswahlComponent implements OnInit {
-  public electionData1: any; //date
-  public electionData2: any;
+  public electionData1: any;
   public members: any;
   public parties: any;
   public errorMessage: any;
   public userDetails: any;
   wahlForm: FormGroup;
-  formSubscription?: Subscription;
   selectedParty: any;
   selectedMember: any;
 
@@ -43,7 +41,7 @@ export class BundestagswahlComponent implements OnInit {
         console.log(this.errorMessage);
       }
     );
-    this.getElection(1).subscribe(//Bundestagswahl
+    this.getElection(1).subscribe(
       (data) => {
         console.log(data);
         this.electionData1 = data;
@@ -99,18 +97,7 @@ export class BundestagswahlComponent implements OnInit {
     return throwError(error);
   }
 
-  print() {
-    let id: number;
-    if (this.selectedParty) {
-      id = this.selectedParty.id
-    } else {
-      id = 0;
-    }
-    console.log(id);
-  }
-
-  push(politicalMemberIdList: Array<number>) {
-    //getPartyID
+  push() {
     let partyId: number;
     if (this.selectedParty) {
       partyId = this.selectedParty.id;
@@ -118,11 +105,11 @@ export class BundestagswahlComponent implements OnInit {
       partyId = 0;
     }
 
-    let memberId: number;
+    let politicalMemberIdList: Array<number> = [];
     if (this.selectedMember) {
-      memberId = this.selectedMember.id;
+      politicalMemberIdList.push(this.selectedMember.id);
     } else {
-      memberId = 0;
+      politicalMemberIdList.push(0);
     }
 
     this.electionService.pushParty(this.userDetails.id, 1, partyId).subscribe({
