@@ -41,14 +41,12 @@
 
       <!-- Zweitstimme -->
       <mat-radio-group formControlName="zweitstimme">
-        <div *ngFor="let party of parties" class="auswahl">
-          <mat-radio-button [value]="party.id" (click)="toggleRadio($event, 'zweitstimme')" (change)="onSelectionChange(party)">
-            <p>{{party.name}}</p>
-            <div style="display: flex; flex-direction: row; width: inherit">
-              <p>{{party.abbrevation}}</p>
-              <p style="max-width: 60%; font-size: 0.5rem;" align="right">{{electionData1.partyMembers[party.id - 1]}}</p>
-            </div>
+        <div *ngFor="let party of parties" class="auswahl" style="display: flex; flex-direction: row; width: 100%; justify-content: space-between">
+          <mat-radio-button style="width: 100%" [value]="party.id" (click)="toggleRadio($event, 'zweitstimme')" (change)="onSelectionChange(party)">
+            <p style="font-size: 0.7rem;">{{party.name}}</p>
+            <p>{{party.abbrevation}}</p>
           </mat-radio-button>
+          <p style="max-width: 60%; font-size: 0.5rem;" align="right">{{electionData1.partyMembers[party.id - 1] | slice: -1 :2}}</p>
         </div>
       </mat-radio-group>
     </div>
