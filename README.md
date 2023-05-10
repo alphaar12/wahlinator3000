@@ -2,7 +2,9 @@
 
 ## Projektdetails
 
-Projektmanagement wird in Jira Dokumentiert
+"SRS_2.0.pdf" ist Software Requirements Sheet auf dem neusten Stand
+
+Restliches Projektmanagement wird in Jira Dokumentiert
   * Arbeiten mit Scrum
   * Sprints mit Sprint-Planning, Backlog optimierung, Review und Retro
   * Projektteam-Aufteilung in: "Frontend", "Backend", "Datenbank", "Projektmanagement und Scrummaster"
