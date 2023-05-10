@@ -23,7 +23,11 @@
       <!-- Erststimme -->
       <mat-radio-group formControlName="erststimme">
         <div *ngFor="let member of members" class="auswahl">
-          <mat-radio-button [value]="member.id" (click)="toggleRadio($event, 'erststimme')">{{member.lastName}} {{member.firstName}}</mat-radio-button>
+          <mat-radio-button [value]="member.id" (click)="toggleRadio($event, 'erststimme')">
+          <p>{{member.lastName}} {{member.firstName}}</p>
+          <p>{{member.profession}}</p>
+          <p style="max-width: 60%; font-size: 0.5rem;" align="right"> {{memer.political_party_id}}</p>  
+          </mat-radio-button>
         </div>
       </mat-radio-group>
     </div>
