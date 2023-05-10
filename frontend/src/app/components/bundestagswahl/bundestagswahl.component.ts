@@ -16,12 +16,13 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class BundestagswahlComponent implements OnInit {
   public electionData1: any; //date
   public electionData2: any;
-  public Erststimme: any;
+  public members: any;
   public parties: any;
   public errorMessage: any;
   public userDetails: any;
   wahlForm: FormGroup;
   formSubscription?: Subscription;
+  selectedParty: any;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private formBuilder: FormBuilder, private router: Router, private storageService: StorageService, private userService: UserService) {
     this.wahlForm = this.formBuilder.group({
@@ -56,7 +57,7 @@ export class BundestagswahlComponent implements OnInit {
     this.getMembers().subscribe(
       (data) => {
         console.log(data);
-        this.Erststimme = data;
+        this.members = data;
       }, (error) => {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);
@@ -70,6 +71,10 @@ export class BundestagswahlComponent implements OnInit {
     } else {
       this.wahlForm.get(controlName)?.setValue(event.value);
     }
+  }
+
+  onSelectionChange(party: any) {
+    this.selectedParty = party;
   }
 
   getElection(electionId: number): Observable<any> {
@@ -89,8 +94,24 @@ export class BundestagswahlComponent implements OnInit {
     return throwError(error);
   }
 
-  pushParty(politicalPartyId:number) {
-    this.electionService.pushParty(this.userDetails.id, 1, politicalPartyId).subscribe({
+  print(){
+    let id:number;
+    if (this.selectedParty) {
+      id = this.selectedParty.id
+    } else {
+      id = 0;
+    }
+    console.log(id);
+  }
+
+  pushParty() {
+    let id:number;
+    if (this.selectedParty) {
+      id = this.selectedParty.id
+    } else {
+      id = 0;
+    }
+    this.electionService.pushParty(this.userDetails.id, 1, id).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000
