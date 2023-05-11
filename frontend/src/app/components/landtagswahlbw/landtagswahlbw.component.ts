@@ -98,38 +98,22 @@ export class LandtagswahlbwComponent implements OnInit {
     } else {
       id = 0;
     }
-    this.electionService.pushParty(this.userDetails.id, 2, id).subscribe({
-      next: data => {
-        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
-          duration: 3000
-        });
-        this.router.navigate([`/wahlAuswahl`]).then(() => {
-          window.location.reload();
-        });
-      },
-      error: err => {
-        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
-          duration: 3000
-        });
-      }
-    });
-  }
-
-  pushMember(politicalMemberIdList: Array<number>) {
-    this.electionService.pushMember(this.userDetails.id, 2, politicalMemberIdList).subscribe({
-      next: data => {
-        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
-          duration: 3000
-        });
-        this.router.navigate([`/wahlAuswahl`]).then(() => {
-          window.location.reload();
-        });
-      },
-      error: err => {
-        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
-          duration: 3000
-        });
-      }
-    });
+    if(confirm("\nBitte bestätigen Sie ihre Wahl\n\n" + "Ihre Stimme: " + this.selectedParty.name)) {
+      this.electionService.pushParty(this.userDetails.id, 2, id).subscribe({
+        next: data => {
+          this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+            duration: 3000
+          });
+          this.router.navigate([`/wahlAuswahl`]).then(() => {
+            window.location.reload();
+          });
+        },
+        error: err => {
+          this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+            duration: 3000
+          });
+        }
+      });
+    }
   }
 }
