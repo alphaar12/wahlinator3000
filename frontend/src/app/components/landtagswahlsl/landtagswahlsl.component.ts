@@ -15,11 +15,12 @@ import {UserService} from "../../services/user/user.service";
 })
 export class LandtagswahlslComponent implements OnInit {
   public electionData2: any; //wahlkreis
-  public electionData3: any; //Erststimme
+  public members: any; //Erststimme
   public parties: any; //Zweitstimme
   public errorMessage: any;
   private userDetails: any;
   wahlForm: FormGroup;
+  selectedParty: any;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder, private storageService: StorageService, private userService: UserService) {
     this.wahlForm = this.formBuilder.group({
@@ -47,18 +48,12 @@ export class LandtagswahlslComponent implements OnInit {
       (error) => {
         this.errorMessage = error.error.message;
         console.log(this.errorMessage);
-      }
-    );
-
-    this.getMembers().subscribe(
-      (data) => {
-        console.log(data);
-        this.electionData3 = data;
-      }, (error) => {
-        this.errorMessage = error.error.message;
-        console.log(this.errorMessage);
-      }
-    )
+        }
+      )
+    }
+    
+  onSelectionChange(party: any) {
+    this.selectedParty = party;
   }
 
   toggleRadio(event: any, controlName: string) {
@@ -75,37 +70,16 @@ export class LandtagswahlslComponent implements OnInit {
       .pipe(catchError(this.handleError));
   }
 
-  getMembers(): Observable<any> {
-    return this.electionService
-      .getMembers()
-      .pipe(catchError(this.handleError));
-  }
-
   private handleError(error: any) {
     console.error(error);
     return throwError(error);
   }
 
+
+
+ //Saarland pushParty
   pushParty(politicalPartyId: number) {
     this.electionService.pushParty(this.userDetails.id, 3, politicalPartyId).subscribe({
-      next: data => {
-        this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
-          duration: 3000
-        });
-        this.router.navigate([`/wahlAuswahl`]).then(() => {
-          window.location.reload();
-        });
-      },
-      error: err => {
-        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
-          duration: 3000
-        });
-      }
-    });
-  }
-
-  pushMember(politicalMemberIdList: Array<number>) {
-    this.electionService.pushMember(this.userDetails.id, 3, politicalMemberIdList).subscribe({
       next: data => {
         this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
           duration: 3000

@@ -15,10 +15,14 @@
   </div>
   <mat-radio-group formControlName="erststimme">
     <div *ngFor="let party of parties" class="auswahl">
-      <mat-radio-button [value]="party.id"
-                        (click)="toggleRadio($event, 'erststimme')">{{party.abbrevation}}</mat-radio-button>
-    </div>
-  </mat-radio-group>
+      <mat-radio-button [value]="member.id" (click)="toggleRadio($event, 'erststimme')" (change)="onSelectionMemberChange(member)">
+        <p>
+          <span style="font-weight: bold">{{member.lastName}}</span>
+          <span>, {{member.firstName}}</span></p>
+        <p style="max-width: 60%; font-size: 0.7rem;">
+          {{member.profession}}
+        </p>
+       </mat-radio-button>
   <br>
   <button type="submit" style="width: 100%" (click)="pushParty(1)" mat-raised-button color="accent" class="button">
     Absenden
