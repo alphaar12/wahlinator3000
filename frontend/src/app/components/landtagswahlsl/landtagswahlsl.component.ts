@@ -21,6 +21,7 @@ export class LandtagswahlslComponent implements OnInit {
   private userDetails: any;
   wahlForm: FormGroup;
   selectedParty: any;
+  selectedMember: any;
 
   constructor(private electionService: ElectionService, private snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder, private storageService: StorageService, private userService: UserService) {
     this.wahlForm = this.formBuilder.group({
@@ -51,7 +52,7 @@ export class LandtagswahlslComponent implements OnInit {
         }
       )
     }
-    
+
   onSelectionChange(party: any) {
     this.selectedParty = party;
   }
@@ -75,6 +76,9 @@ export class LandtagswahlslComponent implements OnInit {
     return throwError(error);
   }
 
+  onSelectionMemberChange(member: any) {
+    this.selectedMember = member;
+  }
 
 
  //Saarland pushParty
