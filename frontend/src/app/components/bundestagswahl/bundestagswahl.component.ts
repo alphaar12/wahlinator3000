@@ -112,29 +112,33 @@ export class BundestagswahlComponent implements OnInit {
       politicalMemberIdList.push(0);
     }
 
-    this.electionService.pushParty(this.userDetails.id, 1, partyId).subscribe({
-      next: data => {
-        this.electionService.pushMember(this.userDetails.id, 1, politicalMemberIdList).subscribe({
-          next: data => {
-            this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
-              duration: 3000
-            });
-            this.router.navigate([`/wahlAuswahl`]).then(() => {
-              window.location.reload();
-            });
-          },
-          error: err => {
-            this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
-              duration: 3000
-            });
-          }
-        });
-      },
-      error: err => {
-        this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
-          duration: 3000
-        });
-      }
-    });
+    if(confirm("\nBitte bestätigen Sie ihre Wahl\n\nErststimme: " + this.selectedMember.lastName
+      + ", " + this.selectedMember.firstName + "\nZweitstimme: " + this.selectedParty.name)){
+      this.electionService.pushParty(this.userDetails.id, 1, partyId).subscribe({
+        next: data => {
+          this.electionService.pushMember(this.userDetails.id, 1, politicalMemberIdList).subscribe({
+            next: data => {
+              this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
+                duration: 3000
+              });
+              this.router.navigate([`/wahlAuswahl`]).then(() => {
+                window.location.reload();
+              });
+            },
+            error: err => {
+              this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+                duration: 3000
+              });
+            }
+          });
+        },
+        error: err => {
+          this.snackBar.open('Wahl fehlgeschlagen! ' + this.errorMessage, 'OK', {
+            duration: 3000
+          });
+        }
+      });
+    }
+
   }
 }
