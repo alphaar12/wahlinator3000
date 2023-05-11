@@ -90,10 +90,17 @@ export class LandtagswahlslComponent implements OnInit {
     this.selectedMember = member;
   }
 
-  pushParty(politicalPartyId: number) {
+  pushMember(politicalPartyId: number) {
+    let politicalMemberIdList: Array<number> = [];
+    if (this.selectedMember) {
+      politicalMemberIdList.push(this.selectedMember.id);
+    } else {
+      politicalMemberIdList.push(0);
+    }
+
     if(confirm("\nBitte bestätigen Sie ihre Wahl\n\nIhre Stimme: " + this.selectedMember.lastName
       + ", " + this.selectedMember.firstName)) {
-      this.electionService.pushParty(this.userDetails.id, 3, politicalPartyId).subscribe({
+      this.electionService.pushMember(this.userDetails.id, 3, politicalMemberIdList).subscribe({
         next: data => {
           this.snackBar.open('Wahl wurde erfolgreich durchgeführt!', 'OK', {
             duration: 3000
